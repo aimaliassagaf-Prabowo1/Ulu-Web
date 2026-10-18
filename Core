@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ulumunch – Uluru Kewirausahaan SMP Lazuardi</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Chewy&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2b1a10;--cream:#fbe8cc;--paper:#fffaf1;--brown:#5b3a24;--brown2:#8a5a3b;
+  --purple:#6e3f8f;--lilac:#d9c8e8;--olive:#7f8f4e;--olive2:#dfe3c4;--orange:#e07a3a;
+  --yellow:#f6c945;--red:#d6332a;--green:#25a35a;
+  --b:3px solid var(--ink);--sh:5px 5px 0 var(--ink);--r:18px;--intro:1.25s;
+}
+html.intro-done{--intro:0s}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--cream);color:var(--ink);
+  background-image:radial-gradient(rgba(43,26,16,.08) 1.2px,transparent 1.2px);background-size:22px 22px;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque','Plus Jakarta Sans',sans-serif}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px;width:100%}
+.hide{display:none!important}
+:focus-visible{outline:3px dashed var(--purple);outline-offset:3px}
+.deco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.deco span{position:absolute;font-size:24px;opacity:.6;animation:drift 8s ease-in-out infinite;filter:drop-shadow(2px 2px 0 rgba(43,26,16,.25))}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-22px) rotate(12deg)}}
+main,footer{position:relative;z-index:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.i{display:inline-grid;place-items:center;width:1.15em;height:1.15em;flex:none;vertical-align:-.2em}
+.i svg{width:100%;height:100%;display:block}
+.i.tabic{width:30px;height:30px;padding:5px;background:var(--red);color:#fff;border:2.5px solid var(--ink);border-radius:9px;box-shadow:2px 2px 0 var(--ink);vertical-align:middle}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:800;font-size:15px;
+  padding:12px 20px;border:var(--b);border-radius:14px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;
+  background:var(--yellow);color:var(--ink);text-decoration:none;transition:transform .1s,box-shadow .1s;white-space:nowrap;position:relative;overflow:hidden}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:4px 4px 0 var(--ink)}
+.btn-dark{background:var(--brown);color:#fff}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-white{background:#fff}
+.btn-green{background:var(--green);color:#fff}
+.btn-red{background:#f8d3cf;color:#9b1c12}
+.btn-lg{font-size:17px;padding:15px 24px}
+.btn-sm{font-size:13px;padding:8px 12px;border-radius:11px;box-shadow:3px 3px 0 var(--ink)}
+.btn-sq{padding:9px 11px}
+.btn-block{width:100%}
+.hdr{position:sticky;top:0;z-index:40;background:var(--cream);border-bottom:var(--b);transition:box-shadow .3s}
+.hdr.scrolled{box-shadow:0 6px 0 rgba(43,26,16,.12)}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0 10px}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer;background:none;border:0;font:inherit;color:inherit;text-align:left}
+.brand svg{width:58px;height:58px;flex:none;filter:drop-shadow(3px 3px 0 var(--ink))}
+.brand b{font-family:'Chewy',cursive;font-weight:400;font-size:32px;line-height:1;display:block;color:var(--brown)}
+.brand small{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--purple)}
+.hdr-right{display:flex;align-items:center;gap:14px}
+.uluru-logo{width:70px;height:70px;flex:none;filter:drop-shadow(3px 3px 0 var(--ink));animation:uSway 5s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes uSway{0%,100%{rotate:-4deg}50%{rotate:4deg}}
+.hdr-top,.brand svg,.brand b,.uluru-logo{transition:all .35s cubic-bezier(.3,1.3,.5,1)}
+.hdr.scrolled .hdr-top{padding:6px 0 4px}
+.hdr.scrolled .brand svg{width:42px;height:42px}
+.hdr.scrolled .brand b{font-size:25px}
+.hdr.scrolled .uluru-logo{width:48px;height:48px}
+.brand:hover svg{transform:rotate(-14deg) scale(1.08)}
+.nav{display:flex;gap:10px;overflow-x:auto;padding:4px 4px 14px;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.tab{flex:none;font:inherit;font-weight:800;font-size:14px;padding:6px 16px 6px 7px;border:var(--b);border-radius:999px;background:#fff;
+  cursor:pointer;box-shadow:3px 3px 0 var(--ink);display:inline-flex;gap:9px;align-items:center;color:var(--ink);transition:transform .2s cubic-bezier(.3,1.6,.5,1),background .2s,box-shadow .2s}
+.tab:hover{background:var(--lilac);transform:translateY(-3px);box-shadow:4px 5px 0 var(--ink)}
+.tab:hover .tabic{animation:wiggle .5s ease}
+.tab.on{background:var(--purple);color:#fff}
+.tab.on .tabic{background:var(--yellow);color:var(--ink)}
+.ticker{background:var(--brown);color:var(--cream);overflow:hidden;white-space:nowrap;border-top:var(--b);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.ticker div{display:inline-block;padding:8px 0;font-weight:800;letter-spacing:.1em;font-size:13px;animation:tick 28s linear infinite}
+.ticker:hover div{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+main{flex:1;padding:28px 0 10px}
+.page{animation:fade .5s cubic-bezier(.2,1,.3,1)}
+@keyframes fade{from{opacity:0;transform:translateY(20px);filter:blur(5px)}}
+.poster{position:relative;overflow:hidden;background:#fbe3c2;border:var(--b);border-radius:28px;box-shadow:9px 9px 0 var(--ink);
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;padding:36px 34px;animation:uPoster .9s cubic-bezier(.2,1.25,.4,1) var(--intro) backwards}
+@keyframes uPoster{from{opacity:0;transform:translateY(50px) scale(.95) rotate(-1.5deg)}}
+.blob{position:absolute;border:var(--b);z-index:0;animation:uMorph 10s ease-in-out infinite;
+  translate:calc(var(--px,0) * var(--dep,20) * 1px) calc(var(--py,0) * var(--dep,20) * 1px);transition:translate .5s cubic-bezier(.2,.9,.3,1)}
+.b1{width:260px;height:200px;background:var(--brown2);right:-80px;top:-70px;--dep:44}
+.b2{width:230px;height:190px;background:var(--olive);left:-90px;bottom:-90px;--dep:-34;animation-duration:12s}
+.b3{width:150px;height:120px;background:var(--lilac);left:44%;top:-60px;--dep:28;animation-duration:9s}
+.b4{width:180px;height:150px;background:var(--lilac);right:-60px;bottom:-60px;--dep:-40;animation-duration:11s}
+@keyframes uMorph{0%,100%{border-radius:60% 40% 55% 45%/55% 45% 55% 45%}33%{border-radius:40% 60% 45% 55%/45% 60% 40% 55%}66%{border-radius:55% 45% 62% 38%/62% 38% 55% 45%}}
+.crown-deco{position:absolute;width:56px;left:50%;top:22px;transform:rotate(-12deg);z-index:1;animation:wig 3s ease-in-out infinite}
+@keyframes wig{50%{transform:rotate(6deg) translateY(-4px)}}
+.spark{position:absolute;z-index:1;color:var(--yellow);font-size:22px;animation:twinkle 2.2s ease-in-out infinite}
+.spark.s1{left:8%;top:12%}.spark.s2{left:46%;bottom:14%;animation-delay:.7s;color:var(--purple)}.spark.s3{right:6%;top:46%;animation-delay:1.3s}
+.crown-deco,.spark{translate:calc(var(--px,0) * -26px) calc(var(--py,0) * -26px);transition:translate .5s ease-out}
+@keyframes twinkle{0%,100%{transform:scale(.6) rotate(0);opacity:.4}50%{transform:scale(1.15) rotate(45deg);opacity:1}}
+.p-left,.p-items{position:relative;z-index:2}
+.p-date{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:13px;padding:5px 12px;background:#fff;border:2.5px solid var(--ink);border-radius:999px}
+.p-title{font-family:'Chewy',cursive;font-weight:400;color:var(--brown);font-size:clamp(58px,8vw,100px);line-height:.88;
+  transform:rotate(-7deg);transform-origin:left;margin:26px 0 30px;text-shadow:4px 4px 0 #e9c79c}
+.p-title span{display:block;margin-left:36px;color:var(--brown2)}
+.p-title .i{width:.38em;height:.38em;color:var(--olive);vertical-align:top;margin-left:8px;display:inline-grid}
+.p-title .i svg{animation:spin 6s linear infinite}
+.p-title .ltr{display:inline-block;margin:0;color:inherit;cursor:default;
+  animation:uDrop .75s cubic-bezier(.3,1.6,.5,1) backwards;animation-delay:calc(var(--intro) + .3s + var(--i,0) * 60ms)}
+.p-title .ltr.ok{animation:none}
+.p-title .ltr.ok.jump{animation:uJump .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes uDrop{from{opacity:0;transform:translateY(-130px) rotate(-30deg) scale(.6)}}
+@keyframes uJump{30%{transform:translateY(-24px) rotate(-12deg) scale(1.18)}65%{transform:translateY(5px) rotate(5deg) scale(.96)}}
+.p-tag{font-weight:800;color:var(--purple);font-size:18px;text-transform:uppercase;line-height:1.35;max-width:380px;margin-bottom:22px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px}
+.p-bottom{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.p-quote{display:inline-block;background:var(--purple);color:#fff;font-family:'Chewy',cursive;font-size:22px;padding:14px 22px;
+  border:var(--b);border-radius:40% 60% 50% 50%/60% 50% 50% 40%;transform:rotate(-4deg);box-shadow:4px 4px 0 var(--ink);animation:uQuote 4s ease-in-out infinite}
+@keyframes uQuote{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-1deg) translateY(-7px) scale(1.03)}}
+.dino{width:100px;animation:bob 2.6s ease-in-out infinite}
+.p-items{display:flex;flex-direction:column;gap:16px;animation:uSlideR .9s cubic-bezier(.2,1.3,.4,1) calc(var(--intro) + .35s) backwards}
+@keyframes uSlideR{from{opacity:0;transform:translateX(70px)}}
+.pitem{display:flex;align-items:center;gap:14px;background:rgba(255,250,241,.75);border:var(--b);border-radius:24px;box-shadow:var(--sh);
+  padding:10px 16px 10px 10px;cursor:pointer;font:inherit;color:inherit;text-align:left;width:94%;animation:bob 3.4s ease-in-out infinite;transition:background .15s}
+.pitem:hover{background:#fff}
+.pitem:active{scale:.97}
+.pitem:nth-child(odd){align-self:flex-end}
+.pitem:nth-child(even){align-self:flex-start}
+.pitem:nth-child(2){animation-delay:.5s}.pitem:nth-child(3){animation-delay:1s}.pitem:nth-child(4){animation-delay:1.5s}
+.pitem.ex{background:#fff4d6;box-shadow:5px 5px 0 var(--ink),0 0 0 4px var(--yellow);animation:bob 3.4s ease-in-out infinite,uGlow 1.8s ease-in-out infinite}
+@keyframes uGlow{50%{box-shadow:5px 5px 0 var(--ink),0 0 0 9px rgba(246,201,69,.5)}}
+@keyframes bob{50%{translate:0 -7px}}
+.pblob{width:130px;height:106px;flex:none;border:var(--b);display:grid;place-items:center;overflow:hidden;position:relative;
+  border-radius:58% 42% 50% 50%/52% 48% 52% 48%;transition:transform .15s;animation:uMorph 7s ease-in-out infinite}
+.pitem:hover .pblob{transform:rotate(-4deg) scale(1.04)}
+.pblob svg{width:92%;height:92%}
+.pblob img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pblob .emoji{font-size:56px}
+.pinfo{display:flex;flex-direction:column;gap:7px;align-items:flex-start}
+.pname{font-family:'Chewy',cursive;font-size:23px;color:#fff;padding:5px 16px;border:var(--b);border-radius:999px;box-shadow:3px 3px 0 var(--ink);line-height:1.1}
+.pprice{font-family:'Chewy',cursive;font-size:22px;color:#fff;background:#9a8f86;padding:4px 14px;border:var(--b);border-radius:45% 55% 50% 50%/60% 50% 50% 40%;line-height:1.1;text-align:center}
+.pprice small{font-size:15px;display:block}
+.exmini{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;letter-spacing:.06em;padding:3px 9px;background:var(--yellow);border:2.5px solid var(--ink);border-radius:999px;animation:wiggle 1.8s ease-in-out infinite}
+.plus{font-size:50px;font-weight:800;line-height:1;color:var(--purple);margin-left:auto;padding:0 4px;transition:transform .15s}
+.plus small{font-family:'Chewy',cursive;font-size:20px;color:var(--red);display:block;transform:rotate(-10deg)}
+.pitem:hover .plus{transform:rotate(90deg) scale(1.15)}
+.sec{margin-top:46px}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.sec-head h2{font-size:clamp(30px,4.5vw,44px);letter-spacing:-1px;line-height:1}
+.sec-head h2::after{content:'';display:block;width:110px;height:12px;margin-top:10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpath d='M0 6 Q6 0 12 6 T24 6' fill='none' stroke='%23e07a3a' stroke-width='3'/%3E%3C/svg%3E") repeat-x;
+  background-size:24px 12px;animation:uSquig 1.2s linear infinite}
+@keyframes uSquig{to{background-position:24px 0}}
+.sec-head p{color:#5a4a3e;font-weight:600;margin-top:8px}
+.label{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;
+  padding:6px 12px;border:2.5px solid var(--ink);border-radius:999px;background:#fff;margin-bottom:10px}
+.card{background:var(--paper);border:var(--b);border-radius:var(--r);box-shadow:var(--sh)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.stepc{padding:20px;display:flex;gap:14px;align-items:flex-start}
+.stepc .n{width:48px;height:48px;flex:none;border:var(--b);border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-family:'Chewy',cursive;font-size:24px}
+.stepc b{display:block;font-size:17px;margin-bottom:4px}
+.stepc p{font-size:14px;color:#5a4a3e;line-height:1.5}
+.stepc,.tcard,.acard,.stat{transition:transform .25s cubic-bezier(.3,1.5,.5,1),box-shadow .25s}
+.stepc:hover,.tcard:hover,.acard:hover,.stat:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
+.stepc:hover .n{animation:uSpin1 .6s cubic-bezier(.3,1.4,.5,1)}
+@keyframes uSpin1{to{transform:rotate(360deg)}}
+.annbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 20px;background:var(--lilac)}
+.annbar .l{display:flex;gap:14px;align-items:center}
+.annbar .ic{width:48px;height:48px;border:var(--b);border-radius:50%;background:#fff;display:grid;place-items:center;font-size:20px;flex:none;animation:uRing 2.6s ease-in-out infinite}
+@keyframes uRing{0%,40%,100%{transform:none}8%{transform:rotate(-16deg) scale(1.1)}16%{transform:rotate(14deg)}24%{transform:rotate(-8deg)}32%{transform:rotate(4deg)}}
+.annbar b{font-size:17px}
+.annbar p{font-size:14px;font-weight:600;margin-top:2px}
+.ptscard{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;align-items:center;padding:24px;background:#fff6e8;position:relative;overflow:hidden}
+.ptscard h2{font-size:clamp(26px,4vw,38px);line-height:1.05;margin-bottom:8px}
+.ptscard p{color:#5a4a3e;font-weight:600;line-height:1.55}
+.coin{position:absolute;right:16px;top:12px;width:54px;height:54px;border:var(--b);border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-family:'Chewy',cursive;font-size:22px;box-shadow:3px 3px 0 var(--ink);animation:flip 3s ease-in-out infinite}
+@keyframes flip{50%{transform:rotateY(180deg) translateY(-6px)}}
+.ptscheck{display:flex;flex-wrap:wrap;gap:10px}
+.ptscheck .input{flex:1;min-width:180px}
+#chk-res{width:100%;font-weight:800;min-height:22px}
+.tcard{padding:16px;display:flex;gap:14px;align-items:center}
+.tcard:hover .head{animation:wiggle .5s ease 2}
+.head{width:74px;height:74px;flex:none;border:var(--b);border-radius:50%;overflow:hidden;box-shadow:3px 3px 0 var(--ink)}
+.head svg,.head img{width:100%;height:100%;display:block;object-fit:cover}
+.tcard .who b{font-size:20px;font-family:'Bricolage Grotesque',sans-serif;display:block}
+.role{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:2px 9px;border:2px solid var(--ink);border-radius:999px;margin:3px 0}
+.tcard .num{font-size:13.5px;font-weight:700;color:#5a4a3e;display:block}
+.tcard .btn{margin-left:auto}
+.mcard{display:flex;flex-direction:column;overflow:hidden}
+.mcard,.gcard{position:relative;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease,box-shadow .2s}
+.mcard:hover,.gcard:hover{transform:perspective(900px) translate(-3px,-3px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));box-shadow:9px 9px 0 var(--ink)}
+.mcard::after,.gcard::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;transition:opacity .25s;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.45),transparent 45%)}
+.mcard:hover::after,.gcard:hover::after{opacity:1}
+.mcard.ex{box-shadow:5px 5px 0 var(--ink),0 0 0 5px var(--yellow);animation:uGlow2 2s ease-in-out infinite}
+@keyframes uGlow2{0%,100%{box-shadow:5px 5px 0 var(--ink),0 0 0 5px var(--yellow)}50%{box-shadow:5px 5px 0 var(--ink),0 0 0 10px rgba(246,201,69,.45)}}
+.media{height:210px;border-bottom:var(--b);display:grid;place-items:center;position:relative;overflow:hidden}
+.media svg{width:78%;height:90%}
+.media .emoji{font-size:90px}
+.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.media svg,.media .emoji,.gmedia > span:first-child{transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.mcard:hover .media svg,.mcard:hover .media .emoji,.gcard:hover .gmedia > span:first-child{transform:scale(1.1) rotate(-4deg)}
+.price{position:absolute;top:14px;right:14px;background:var(--purple);color:#fff;border:var(--b);border-radius:45% 55% 50% 50%/60% 50% 50% 40%;
+  padding:6px 14px;font-family:'Chewy',cursive;font-size:22px;line-height:1.05;text-align:center;box-shadow:3px 3px 0 var(--ink);transform:rotate(5deg);z-index:1}
+.price small{display:block;font-size:14px}
+.mcard:hover .price{animation:uSwing .7s ease}
+@keyframes uSwing{0%,100%{transform:rotate(5deg)}30%{transform:rotate(-9deg) scale(1.12)}60%{transform:rotate(10deg)}}
+.excl{position:absolute;top:14px;left:14px;z-index:1;display:inline-flex;align-items:center;gap:5px;background:var(--yellow);border:var(--b);border-radius:10px;padding:4px 10px;font-weight:800;font-size:12px;letter-spacing:.06em;box-shadow:3px 3px 0 var(--ink);animation:wiggle 1.8s ease-in-out infinite}
+@keyframes wiggle{50%{transform:rotate(-4deg) scale(1.06)}}
+.soldout{position:absolute;inset:0;z-index:2;background:rgba(43,26,16,.55);display:grid;place-items:center}
+.soldout span{font-family:'Chewy',cursive;font-size:38px;color:#fff;background:var(--red);border:var(--b);border-radius:14px;padding:4px 18px;transform:rotate(-8deg);box-shadow:4px 4px 0 var(--ink)}
+.mbody{padding:18px;flex:1;display:flex;flex-direction:column;gap:8px}
+.mbody h3{font-family:'Chewy',cursive;font-weight:400;font-size:30px;color:var(--brown)}
+.mbody p{font-size:14.5px;color:#5a4a3e;line-height:1.55;flex:1}
+.mact{display:flex;gap:10px;margin-top:10px}
+.mact .btn:first-child{flex:1}
+.stk{display:inline-block;font-size:12.5px;font-weight:800;padding:3px 10px;border:2px solid var(--ink);border-radius:999px;background:#fff;align-self:flex-start}
+.stk.low{background:#ffe08a;animation:uPulse 1.4s ease-in-out infinite}.stk.out{background:#f8d3cf;color:#9b1c12}
+@keyframes uPulse{0%{box-shadow:0 0 0 0 rgba(224,122,58,.7)}100%{box-shadow:0 0 0 8px rgba(224,122,58,0)}}
+.gcard{overflow:hidden}
+.gmedia{height:220px;border-bottom:var(--b);display:grid;place-items:center;position:relative;overflow:hidden;font-size:76px}
+.gmedia img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gtag{position:absolute;top:12px;left:12px;background:#fff;border:2.5px solid var(--ink);border-radius:10px;padding:4px 10px;font-size:12px;font-weight:800;z-index:1}
+.gbody{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.acard{padding:20px;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.date{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;padding:4px 10px;border:2.5px solid var(--ink);border-radius:10px;background:var(--olive2)}
+.acard h3{font-size:22px;margin:10px 0 6px}
+.acard p{font-size:15px;line-height:1.6;color:#5a4a3e;white-space:pre-line}
+.acts{display:flex;gap:8px;flex:none}
+.stack{display:grid;gap:18px}
+.note{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:700;color:#5a4a3e;padding:10px 14px;border:2.5px dashed var(--brown2);border-radius:12px;background:#fff6e8;margin-bottom:18px}
+.login{max-width:430px;margin:20px auto;padding:30px;text-align:center}
+.bigic{width:72px;height:72px;margin:0 auto 14px;border:var(--b);border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;box-shadow:3px 3px 0 var(--ink)}
+.bigic .i{width:32px;height:32px}
+.login h3{font-size:26px;margin-bottom:6px}
+.login p{font-size:14px;color:#5a4a3e;margin-bottom:18px}
+.pin{text-align:center;font-size:30px!important;letter-spacing:.4em;font-weight:800}
+.dashbar{padding:20px;background:var(--brown);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.dashbar h2{font-size:24px}
+.dashbar p{font-size:13px;opacity:.85;margin-top:4px}
+.chip{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:800;font-size:11px;padding:3px 8px;border-radius:7px;margin-right:8px;vertical-align:middle}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:22px 0}
+.stat{padding:16px 18px}
+.stat small{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#5a4a3e}
+.stat b{font-family:'Bricolage Grotesque',sans-serif;font-size:30px;display:block;margin-top:4px}
+.tbl{overflow:hidden}
+.tbl-head{padding:14px 18px;border-bottom:var(--b);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--cream)}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:var(--lilac);text-align:left;padding:12px 14px;border-bottom:var(--b);font-size:12px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+td{padding:13px 14px;border-bottom:2px solid #efdcc0;vertical-align:top}
+tr:hover td{background:#fff6e8}
+td small{color:#6b5a4e}
+td.r{text-align:right;white-space:nowrap}
+.badge{display:inline-block;font-weight:800;font-size:12px;padding:4px 10px;border:2.5px solid var(--ink);border-radius:999px}
+.st-Menunggu{background:#ffe08a}.st-Diproses{background:#d9c8e8}.st-Selesai{background:#cfe8c0}
+.mgrgrid{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-top:22px}
+.stkctl{display:inline-flex;gap:6px;align-items:center}
+.stkctl .input-sm{width:70px;text-align:center}
+.panel-body{padding:18px}
+.qrprev{border:3px dashed var(--purple);border-radius:14px;background:#fff;min-height:150px;display:grid;place-items:center;text-align:center;padding:12px;margin-bottom:16px;font-weight:700;color:#7a6a5e}
+.qrprev img{max-width:200px;width:100%;border-radius:10px;border:var(--b)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.field label em{font-style:normal;color:#7a6a5e;text-transform:none;letter-spacing:0;font-weight:600}
+.input{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:var(--b);border-radius:12px;background:#fff;color:var(--ink)}
+.input:focus{outline:none;box-shadow:0 0 0 4px var(--lilac)}
+.input-sm{width:auto;font-size:13px;padding:7px 8px;border-radius:9px;font-weight:700}
+textarea.input{resize:vertical}
+.check{display:flex;gap:10px;align-items:center;font-weight:800;padding:12px 14px;border:var(--b);border-radius:12px;background:#fff4d6;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--purple)}
+.err{color:var(--red);font-size:13px;font-weight:800;margin-top:6px;display:none}
+.err.show{display:block}
+.modal{position:fixed;inset:0;z-index:60;background:rgba(43,26,16,.6);display:none;align-items:flex-start;justify-content:center;padding:26px 14px;overflow-y:auto;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.modal.open{display:flex;animation:uBg .3s ease}
+@keyframes uBg{from{background:rgba(43,26,16,0)}}
+.mbox{width:100%;max-width:540px;padding:26px;position:relative;animation:pop .5s cubic-bezier(.2,1,.3,1);margin:auto}
+@keyframes pop{0%{opacity:0;transform:scale(.8) translateY(40px) rotate(-2deg)}60%{opacity:1;transform:scale(1.02) translateY(-6px)}100%{transform:none}}
+.mtitle{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-right:48px}
+.mtitle .ic{width:50px;height:50px;border:var(--b);border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;flex:none}
+.mtitle .ic .i{width:22px;height:22px}
+.mtitle h3{font-size:24px;line-height:1.1}
+.mtitle small{font-weight:700;color:var(--purple)}
+.x{position:absolute;top:16px;right:16px;width:42px;height:42px;border:var(--b);border-radius:50%;background:#fff;cursor:pointer;display:grid;place-items:center;box-shadow:2px 2px 0 var(--ink);color:var(--ink);transition:transform .25s}
+.x:hover{background:#f8d3cf;transform:rotate(90deg)}
+.cart{display:grid;gap:10px}
+.line{display:flex;align-items:center;gap:12px;padding:10px;border:var(--b);border-radius:16px;background:#fff;transition:background .15s}
+.line.on{background:#f3ebfa}
+.line.out{opacity:.55}
+.line .thumb{width:62px;height:54px;border:var(--b);border-radius:50% 50% 45% 55%/55% 45% 55% 45%;display:grid;place-items:center;overflow:hidden;flex:none;position:relative}
+.line .thumb svg{width:100%;height:100%}
+.line .thumb .emoji{font-size:30px}
+.line .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ln b{display:block;font-size:16px}
+.ln small{font-weight:700;color:var(--brown2);display:block}
+.stepper{display:flex;align-items:center;gap:4px;margin-left:auto}
+.stepper button{width:42px;height:42px;border:0;background:none;font-weight:800;font-size:32px;line-height:1;cursor:pointer;color:var(--purple);border-radius:50%;transition:background .12s,transform .12s}
+.stepper button:first-child{color:var(--brown2)}
+.stepper button:hover{background:var(--lilac)}
+.stepper button:active{transform:scale(.85)}
+.stepper span{min-width:30px;text-align:center;font-weight:800;font-size:20px}
+.ptsbox{border:3px dashed var(--yellow);border-radius:14px;background:#fffbea;padding:12px 14px}
+.ptsrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ptsrow b{display:block}
+.ptsrow small{font-weight:700;color:#7a6a5e}
+.ptsuse{margin-left:auto;display:flex;align-items:center;gap:6px}
+.ptsuse .stepper button{width:36px;height:36px;font-size:26px}
+.ptsmuted{font-size:13.5px;font-weight:700;color:#6b5a4e;display:flex;gap:8px;align-items:center}
+.ptsearn{font-size:13px;font-weight:800;color:var(--green);margin-top:8px}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.payopt{border:var(--b);border-radius:14px;padding:12px;background:#fff;cursor:pointer;display:flex;gap:10px;align-items:center;transition:transform .2s,background .2s}
+.payopt:hover:not(.dis){transform:translateY(-2px)}
+.payopt input{width:18px;height:18px;accent-color:var(--purple);flex:none}
+.payopt b{display:block}
+.payopt small{font-size:12px;font-weight:600;color:#6b5a4e}
+.payopt.on{background:#f3ebfa}
+.payopt.dis{opacity:.5;cursor:not-allowed}
+.qrbox{text-align:center;border:3px dashed var(--purple);border-radius:14px;padding:14px;background:#fff;margin-bottom:16px}
+.qrbox img{max-width:240px;width:100%;border:var(--b);border-radius:12px;background:#fff;display:block;margin:0 auto 10px}
+.qrbox b{display:block}
+.qrbox small{font-size:13px;font-weight:600;color:#5a4a3e}
+.cash{display:flex;gap:12px;align-items:center;padding:14px;border:3px dashed var(--olive);border-radius:14px;background:#f1f3e2;margin-bottom:16px}
+.cash > .i{width:30px;height:30px;color:var(--olive)}
+.cash b{display:block}
+.cash small{font-size:13px;font-weight:600;color:#4b5530}
+.total{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--brown);color:#fff;border-radius:14px;margin-bottom:16px}
+.total small{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;display:block}
+.total .tdisc{font-size:12px;font-weight:700;color:#cfe8c0}
+.total b{font-size:30px;color:var(--yellow);font-family:'Chewy',cursive;font-weight:400}
+#o-total{display:inline-block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.receipt{border:var(--b);border-radius:14px;padding:16px;background:var(--cream);font-size:14px;margin-bottom:18px}
+.receipt .row{display:flex;justify-content:space-between;gap:12px;padding:5px 0}
+.receipt .row span:first-child{color:#5a4a3e;font-weight:600}
+.receipt .row span:last-child{font-weight:800;text-align:right}
+.receipt hr{border:0;border-top:2px dashed #c9a983;margin:8px 0}
+.must{font-size:13px;font-weight:800;color:#9b1c12;background:#fdecea;border:2.5px dashed var(--red);border-radius:12px;padding:10px 12px;margin-bottom:14px;text-align:left}
+.okic{width:76px;height:76px;margin:0 auto 12px;border:var(--b);border-radius:50%;background:#cfe8c0;display:grid;place-items:center;color:var(--green);box-shadow:4px 4px 0 var(--ink)}
+.okic .i{width:36px;height:36px}
+.modal.open .okic{animation:uOk .7s .15s cubic-bezier(.3,1.8,.5,1) backwards}
+@keyframes uOk{from{transform:scale(0) rotate(-90deg)}}
+#toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,160%);background:var(--brown);color:#fff;padding:13px 20px;border-radius:14px;
+  border:3px solid var(--yellow);font-weight:800;z-index:90;transition:transform .5s cubic-bezier(.3,1.6,.5,1);max-width:90vw;text-align:center;box-shadow:4px 4px 0 var(--ink)}
+#toast.show{transform:translate(-50%,0)}
+footer{background:var(--brown);color:#f6e6cf;border-top:var(--b);margin-top:64px;padding:46px 0 24px}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:30px;margin-bottom:30px}
+footer h4{color:var(--yellow);font-size:14px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+footer li{list-style:none;font-size:14px;margin-bottom:9px;display:flex;gap:10px;align-items:flex-start;transition:transform .2s}
+footer li:hover{transform:translateX(5px)}
+footer li .i{color:var(--yellow);margin-top:2px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--yellow);text-decoration:underline}
+footer p{font-size:14px;line-height:1.6}
+.fbot{border-top:2px solid rgba(255,255,255,.15);padding-top:18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:13px;opacity:.75}
+body::before{content:'';position:fixed;inset:0;z-index:999;pointer-events:none;
+  background:var(--cream) radial-gradient(rgba(43,26,16,.08) 1.2px,transparent 1.2px) 0 0/22px 22px;animation:uOut .6s ease 1.25s forwards}
+body::after{content:'🍡 🌶️ 🦖 🍨\A Ulumunch';white-space:pre;text-align:center;position:fixed;left:50%;top:50%;z-index:1000;pointer-events:none;
+  font-family:'Chewy',cursive;font-size:clamp(44px,9vw,86px);line-height:1.15;color:var(--brown);text-shadow:4px 4px 0 #e9c79c;
+  transform:translate(-50%,-50%);animation:uIn .8s cubic-bezier(.3,1.7,.5,1) both,uUp .5s ease 1.15s forwards}
+@keyframes uIn{from{opacity:0;transform:translate(-50%,-50%) scale(.3) rotate(-14deg)}}
+@keyframes uOut{to{opacity:0;visibility:hidden}}
+@keyframes uUp{to{opacity:0;visibility:hidden;transform:translate(-50%,-160%) scale(.8)}}
+#sprog{position:fixed;top:0;left:0;width:100%;height:5px;z-index:55;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--purple),var(--orange),var(--yellow),var(--green));border-bottom:1.5px solid var(--ink)}
+.rv{transition:opacity .8s ease,transform .8s cubic-bezier(.2,1.2,.4,1)}
+.rv:not(.in){opacity:0;transform:translateY(40px)}
+.rv-group:not(.in) > *{opacity:0}
+.rv-group.in:not(.done) > *{animation:uRise .7s cubic-bezier(.2,1.3,.4,1) backwards;animation-delay:calc(var(--d,0) * 90ms)}
+.rv-group > *:nth-child(even){--rr:2deg}
+@keyframes uRise{from{opacity:0;transform:translateY(46px) scale(.94) rotate(var(--rr,-2deg))}}
+.ripple{position:absolute;border-radius:50%;background:currentColor;opacity:.3;transform:scale(0);pointer-events:none;animation:uRip .6s ease-out forwards}
+@keyframes uRip{to{transform:scale(1);opacity:0}}
+.hero-btns .btn-dark::after,.hdr-right .btn-purple::after,.fab-order::after,#o-submit::after,#r-mail::after{
+  content:'';position:absolute;top:0;bottom:0;width:40%;left:-60%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:uSweep 3.5s ease-in-out infinite}
+@keyframes uSweep{0%,60%{left:-60%}100%{left:130%}}
+.fabs{position:fixed;right:18px;bottom:18px;z-index:45;display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+  transform:translateY(150%);opacity:0;pointer-events:none;transition:transform .45s cubic-bezier(.3,1.5,.5,1),opacity .3s}
+.fabs.show{transform:none;opacity:1;pointer-events:auto}
+.fab-top{width:48px;height:48px;border:var(--b);border-radius:50%;background:#fff;box-shadow:3px 3px 0 var(--ink);cursor:pointer;display:grid;place-items:center;color:var(--ink);transition:transform .2s,background .2s}
+.fab-top .i{transform:rotate(-90deg);width:22px;height:22px}
+.fab-top:hover{background:var(--yellow);transform:translateY(-4px)}
+.fab-order{animation:uFab 2.2s ease-in-out infinite}
+@keyframes uFab{50%{box-shadow:4px 4px 0 var(--ink),0 0 0 9px rgba(110,63,143,.25)}}
+.fx,.trail{position:fixed;z-index:100;pointer-events:none;font-size:24px;line-height:1;will-change:transform,opacity}
+.trail{font-size:15px;font-weight:800}
+.cf{position:fixed;top:-30px;z-index:100;pointer-events:none;border:1.5px solid var(--ink);border-radius:2px}
+@media(max-width:900px){
+  .poster{grid-template-columns:1fr;padding:28px 18px 34px}
+  .pitem{width:100%}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .mgrgrid,.ptscard{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .hdr-right .btn span:last-child{display:none}
+  .brand b{font-size:26px}
+  .brand svg{width:48px;height:48px}
+  .brand small{font-size:9.5px}
+  .uluru-logo{width:56px;height:56px}
+  .pblob{width:104px;height:90px}
+  .pname{font-size:19px}
+  .fgrid,.grid2,.pay{grid-template-columns:1fr}
+  .tcard{flex-wrap:wrap}
+  .tcard .btn{margin-left:0;width:100%}
+  .mbox{padding:20px}
+  .deco span{font-size:18px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  body::before,body::after{display:none!important}
+  .rv:not(.in),.rv-group:not(.in) > *{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<div class="deco" id="deco" aria-hidden="true"></div>
+<header class="hdr">
+  <div class="wrap">
+    <div class="hdr-top">
+      <button class="brand" data-go="beranda" aria-label="Ke Beranda">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <defs><pattern id="umDots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.6" fill="#2b1a10" opacity=".35"></circle></pattern></defs>
+          <circle cx="50" cy="50" r="46" fill="#f4e9da" stroke="#2b1a10" stroke-width="4"></circle>
+          <circle cx="50" cy="50" r="46" fill="url(#umDots)"></circle>
+          <path id="umArc" d="M18 46 A33 33 0 0 1 82 46" fill="none"></path>
+          <text font-family="Chewy,cursive" font-size="15" fill="#5b3a24" letter-spacing="1"><textPath href="#umArc" startOffset="50%" text-anchor="middle">ULUMUNCH</textPath></text>
+          <g stroke="#2b1a10" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M44 74 L40 86 M54 74 L57 86" fill="none"></path>
+            <path d="M30 66 C30 54 44 50 56 54 C64 56 68 62 66 70 C60 78 40 80 30 66 Z" fill="#6c7fb8"></path>
+            <path d="M60 56 C62 46 62 40 64 34" fill="none" stroke-width="5" stroke="#5a6ca3"></path>
+            <circle cx="65" cy="33" r="5" fill="#6c7fb8"></circle>
+          </g>
+          <path d="M69 33 L75 34 L69 36 Z" fill="#2b1a10"></path>
+          <circle cx="66" cy="32" r="1.2" fill="#fff"></circle>
+          <path d="M14 84 H86" stroke="#7f8f4e" stroke-width="3" stroke-linecap="round"></path>
+        </svg>
+        <div><b>Ulumunch</b><small>Uluru Kewirausahaan · SMP Lazuardi</small></div>
+      </button>
+      <div class="hdr-right">
+        <button class="btn btn-purple" onclick="openOrder()"><span data-i="plus"></span><span>Pre-Order</span></button>
+        <svg class="uluru-logo" viewBox="0 0 200 200" role="img" aria-label="Logo Class 7 Uluru Kata Tjuta">
+          <defs><clipPath id="ulClip"><circle cx="100" cy="100" r="94"></circle></clipPath></defs>
+          <circle cx="100" cy="100" r="94" fill="#fbebd9"></circle>
+          <g clip-path="url(#ulClip)">
+            <circle cx="140" cy="128" r="12" fill="#e8a35a"></circle>
+            <path d="M0 172 C6 150 26 138 58 137 C82 136 102 146 114 172 Z" fill="#b5532a"></path>
+            <path d="M28 150 l4 18 M48 142 l6 24 M70 141 l5 26 M90 148 l4 20" stroke="#8c3a1a" stroke-width="2.5" stroke-linecap="round"></path>
+            <path d="M108 172 C112 156 122 150 132 156 C138 145 152 145 158 158 C166 150 182 155 196 172 Z" fill="#c4612f"></path>
+            <rect x="0" y="168" width="200" height="40" fill="#d98a4a"></rect>
+            <path d="M0 169 H200" stroke="#5b2e1a" stroke-width="4" stroke-dasharray="6 3"></path>
+            <path d="M120 200 C100 190 140 184 110 176" stroke="#efb070" stroke-width="7" fill="none" stroke-linecap="round"></path>
+          </g>
+          <circle cx="100" cy="100" r="94" fill="none" stroke="#5b2e1a" stroke-width="5"></circle>
+          <path id="ulArc" d="M42 66 A64 64 0 0 1 158 66" fill="none"></path>
+          <text font-family="Bricolage Grotesque,sans-serif" font-weight="700" font-size="15" letter-spacing="4" fill="#3b2418"><textPath href="#ulArc" startOffset="50%" text-anchor="middle">• CLASS 7 •</textPath></text>
+          <text x="100" y="104" text-anchor="middle" font-family="Chewy,cursive" font-size="44" fill="#9a3a1f" letter-spacing="1">ULURU</text>
+          <text x="100" y="126" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="12" letter-spacing="3" fill="#3b2418">— KATA TJUTA —</text>
+        </svg>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Navigasi utama">
+      <button class="tab on" data-go="beranda"><span data-i="home" class="tabic"></span> Beranda</button>
+      <button class="tab" data-go="menu"><span data-i="food" class="tabic"></span> Menu &amp; Pre-Order</button>
+      <button class="tab" data-go="galeri"><span data-i="image" class="tabic"></span> Galeri</button>
+      <button class="tab" data-go="pengumuman"><span data-i="horn" class="tabic"></span> Pengumuman</button>
+      <button class="tab" data-go="manager"><span data-i="user" class="tabic"></span> Area Manager <span id="lock"></span></button>
+    </nav>
+  </div>
+  <div class="ticker" aria-hidden="true"><div id="ticker"></div></div>
+</header>
+<main class="wrap">
+  <section id="page-beranda" class="page">
+    <div class="poster">
+      <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+      <svg class="crown-deco" viewBox="0 0 60 40" aria-hidden="true"><path d="M6 34 L4 10 L18 22 L30 4 L42 22 L56 10 L54 34 Z" fill="none" stroke="#7f8f4e" stroke-width="3.5" stroke-linejoin="round"></path></svg>
+      <span class="spark s1" aria-hidden="true">✦</span><span class="spark s2" aria-hidden="true">✦</span><span class="spark s3" aria-hidden="true">✦</span>
+      <div class="p-left">
+        <span class="p-date" id="p-date">-</span>
+        <h1 class="p-title">Ulumunch<span>Menu<span data-i="star"></span></span></h1>
+        <p class="p-tag">Beli di dekat Lapangan Alfarabi saat snack time!</p>
+        <div class="hero-btns">
+          <button class="btn btn-dark btn-lg" onclick="openOrder()"><span data-i="plus"></span> Pre-Order Sekarang</button>
+          <button class="btn btn-white btn-lg" data-go="menu">Lihat Menu <span data-i="arrow"></span></button>
+        </div>
+        <div class="p-bottom">
+          <div class="p-quote">Makan enak bikin<br>hari lebih ceria! ✨</div>
+          <svg class="dino" viewBox="0 0 120 90" aria-hidden="true">
+            <g stroke="#2b1a10" stroke-width="2.5" stroke-linejoin="round">
+              <path d="M44 34 l4 -9 l5 8 M56 28 l4 -9 l5 8 M68 25 l4 -9 l4 9" fill="#b48fd6"></path>
+              <path d="M18 68 Q16 46 38 40 Q48 24 68 22 Q90 20 96 32 Q99 42 86 44 L78 44 Q80 56 72 66 L74 80 L65 80 L63 70 L46 72 L46 82 L37 82 L35 70 Q22 72 8 64 Q2 58 8 55 Q14 62 18 60Z" fill="#8e63b5"></path>
+            </g>
+            <circle cx="85" cy="30" r="3" fill="#2b1a10"></circle><circle cx="86" cy="29" r="1" fill="#fff"></circle>
+            <path d="M88 39 q4 2 7 -1" stroke="#2b1a10" stroke-width="2" fill="none" stroke-linecap="round"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="p-items" id="hero-stack"></div>
+    </div>
+    <div class="sec">
+      <div class="sec-head"><div><span class="label">Gampang!</span><h2>Cara Pesan</h2></div></div>
+      <div class="steps">
+        <div class="card stepc"><div class="n">1</div><div><b>Pilih menu</b><p>Tekan tanda <b style="display:inline;color:var(--purple)">+</b> pada menu yang kamu mau. Cek sisa stoknya ya!</p></div></div>
+        <div class="card stepc"><div class="n">2</div><div><b>Isi data &amp; bayar</b><p>Isi nama, pilih Cash atau QRIS. Isi No. WA / email supaya dapat poin.</p></div></div>
+        <div class="card stepc"><div class="n">3</div><div><b>Kirim email pesanan</b><p>Wajib kirim ringkasan ke email Saladin. WhatsApp opsional.</p></div></div>
+        <div class="card stepc"><div class="n">4</div><div><b>Ambil pesanan</b><p>Di dekat Lapangan Alfarabi saat snack time.</p></div></div>
+      </div>
+    </div>
+    <div class="sec card ptscard">
+      <div class="coin" aria-hidden="true">P</div>
+      <div>
+        <span class="label"><span data-i="star"></span> Poin Ulumunch</span>
+        <h2>Belanja 10K = 1 Poin</h2>
+        <p>1 poin = potongan <b>Rp 2.000</b> di pesanan berikutnya. Poin masuk setelah pembelian dikonfirmasi oleh Manager.</p>
+      </div>
+      <div class="ptscheck">
+        <input id="chk-id" class="input" placeholder="No. WA atau email" onkeydown="if(event.key==='Enter')checkPts()">
+        <button class="btn btn-dark" onclick="checkPts()">Cek Poin</button>
+        <p id="chk-res"></p>
+      </div>
+    </div>
+    <div class="sec card annbar">
+      <div class="l"><div class="ic">📢</div><div><b>Info Terbaru</b><p id="latest-ann">-</p></div></div>
+      <button class="btn btn-white btn-sm" data-go="pengumuman">Semua Pengumuman <span data-i="arrow"></span></button>
+    </div>
+    <div class="sec">
+      <div class="sec-head"><div><span class="label">Hubungi Kami</span><h2>Tim Ulumunch</h2><p>Tekan tombol WhatsApp untuk chat langsung.</p></div></div>
+      <div class="grid3" id="team-grid"></div>
+    </div>
+  </section>
+  <section id="page-menu" class="page hide">
+    <div class="sec-head">
+      <div><span class="label">🍽️ Menu</span><h2>Menu Ulumunch</h2><p>Tekan "Pesan" untuk Pre-Order. Stok berkurang otomatis setiap ada pesanan.</p></div>
+      <button class="btn btn-purple mgr-only hide" onclick="openMenuEditor()"><span data-i="plus"></span> Tambah Menu</button>
+    </div>
+    <div class="grid3" id="menu-grid"></div>
+  </section>
+  <section id="page-galeri" class="page hide">
+    <div class="sec-head">
+      <div><span class="label">📸 Galeri</span><h2>Portofolio &amp; Galeri</h2><p>Dokumentasi dapur, produk, dan tim Uluru Kewirausahaan.</p></div>
+      <button class="btn btn-purple mgr-only hide" onclick="openM('m-gallery')"><span data-i="plus"></span> Tambah Foto</button>
+    </div>
+    <div class="grid3" id="gallery-grid"></div>
+  </section>
+  <section id="page-pengumuman" class="page hide">
+    <div class="sec-head">
+      <div><span class="label">📢 Info</span><h2>Pengumuman</h2><p>Update batch pre-order, promo, dan jadwal.</p></div>
+      <button class="btn btn-purple mgr-only hide" onclick="openAnnEditor()"><span data-i="plus"></span> Buat Pengumuman</button>
+    </div>
+    <p class="note mgr-hide"><span data-i="lock"></span> Pengumuman hanya bisa dibuat &amp; diganti oleh Manager lewat Area Manager.</p>
+    <div class="stack" id="ann-list"></div>
+  </section>
+  <section id="page-manager" class="page hide">
+    <div id="login-box" class="card login">
+      <div class="bigic"><span data-i="user"></span></div>
+      <h3>Area Manager</h3>
+      <p>Masukkan PIN Manager untuk mengelola pesanan, stok, QRIS, poin, menu, galeri, dan pengumuman.</p>
+      <div class="field"><input type="password" id="pin" class="input pin" maxlength="5" inputmode="numeric" placeholder="•••••" onkeydown="if(event.key==='Enter')login()"></div>
+      <button class="btn btn-dark btn-block btn-lg" onclick="login()"><span data-i="unlock"></span> Masuk</button>
+      <p id="e-pin" class="err">PIN salah, coba lagi.</p>
+    </div>
+    <div id="dash" class="hide">
+      <div class="card dashbar">
+        <div><h2><span class="chip">MANAGER</span>Daftar Pesanan</h2><p>Kelola pesanan, stok, QRIS, poin, menu, galeri &amp; pengumuman.</p></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-white btn-sm" onclick="go('pengumuman')"><span data-i="horn"></span> Kelola Pengumuman</button>
+          <button class="btn btn-white btn-sm" onclick="exportData()"><span data-i="copy"></span> Export Data</button>
+          <label class="btn btn-white btn-sm" style="cursor:pointer"><span data-i="plus"></span> Import Data<input type="file" accept=".json" style="display:none" onchange="importData(this)"></label>
+          <button class="btn btn-red btn-sm" onclick="resetAllData()"><span data-i="trash"></span> Reset Semua Data</button>
+          <button class="btn btn-red btn-sm" onclick="logout()"><span data-i="logout"></span> Keluar</button>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div class="note" style="margin-bottom:0" id="storage-info">💾 Data tersimpan di localStorage browser ini. Gunakan Export untuk backup.</div>
+      <div class="card tbl">
+        <div class="tbl-head"><b>Pre-Order Masuk</b><span class="badge" id="order-count" style="background:#fff">0 Pesanan</span></div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kode / Tanggal</th><th>Pemesan</th><th>Kontak</th><th>Pesanan</th><th>Total</th><th>Status</th><th style="text-align:right">Aksi</th></tr></thead>
+            <tbody id="orders-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="mgrgrid">
+        <div class="card tbl">
+          <div class="tbl-head"><b>📦 Stok Menu</b><button class="btn btn-purple btn-sm" onclick="openMenuEditor()"><span data-i="plus"></span> Tambah Menu</button></div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Menu</th><th>Sisa</th><th style="text-align:right">Ubah Stok</th></tr></thead>
+              <tbody id="stock-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card tbl">
+          <div class="tbl-head"><b>📱 QRIS Pembayaran</b></div>
+          <div class="panel-body">
+            <div class="qrprev" id="qr-prev"></div>
+            <div class="field"><label for="qr-file">Upload gambar QRIS</label><input type="file" accept="image/*" id="qr-file" class="input" onchange="uploadQris(this)"></div>
+            <div class="field"><label for="qr-url">atau URL gambar QRIS <em>(opsional)</em></label><input id="qr-url" class="input" type="url" placeholder="https://..."></div>
+            <div class="field"><label for="qr-name">Nama merchant <em>(opsional)</em></label><input id="qr-name" class="input" placeholder="Ulumunch"></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-dark btn-sm" onclick="saveQris()"><span data-i="check"></span> Simpan</button>
+              <button class="btn btn-red btn-sm" onclick="removeQris()"><span data-i="trash"></span> Hapus QRIS</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card tbl" style="margin-top:22px">
+        <div class="tbl-head"><b>⏳ Poin Menunggu Konfirmasi</b><span class="badge" id="pending-count" style="background:#ffe08a">0</span></div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Kode / Tanggal</th><th>Pemesan</th><th>Total</th><th>Status</th><th style="text-align:right">Poin</th></tr></thead>
+            <tbody id="pending-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card tbl" style="margin-top:22px">
+        <div class="tbl-head"><b>⭐ Member &amp; Poin</b><small style="font-weight:700">Tiap Rp10.000 = 1 poin · 1 poin = Rp2.000</small></div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Nama</th><th>No. WA / Email</th><th>Poin</th><th style="text-align:right">Atur Poin</th></tr></thead>
+            <tbody id="members-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><h4>Ulumunch</h4><p>Uluru Kewirausahaan — program wirausaha kuliner Class 7 Uluru, SMP Lazuardi. Makan enak bikin hari lebih ceria!</p></div>
+      <div>
+        <h4>Kontak Resmi</h4>
+        <ul>
+          <li><span data-i="mail"></span><a href="mailto:Saladin@lazuardi.sch.id">Saladin@lazuardi.sch.id</a></li>
+          <li><span data-i="pin"></span><span>Dekat Lapangan Alfarabi, SMP Lazuardi</span></li>
+          <li><span data-i="cash"></span><span>Pembayaran: Cash / QRIS</span></li>
+          <li><span data-i="star"></span><span>Tiap 10K = 1 poin (Rp2.000)</span></li>
+        </ul>
+      </div>
+      <div><h4>Tim</h4><ul id="footer-team"></ul></div>
+      <div><h4>Jam Jualan</h4><p>Senin – Jumat<br>Saat snack time</p><p style="opacity:.75;margin-top:8px;font-size:13px">Pre-order online 24/7, diproses di hari sekolah.</p></div>
+    </div>
+    <div class="fbot"><span>© 2026 Ulumunch Uluru Kewirausahaan</span><span>Class 7 Uluru · SMP Lazuardi</span></div>
+  </div>
+</footer>
+<div class="modal" id="m-order" role="dialog" aria-modal="true">
+  <div class="card mbox">
+    <button class="x" onclick="closeM('m-order')" aria-label="Tutup"><span data-i="x"></span></button>
+    <div class="mtitle"><div class="ic"><span data-i="plus"></span></div><div><h3>Form Pre-Order</h3><small>Ulumunch · SMP Lazuardi</small></div></div>
+    <form onsubmit="event.preventDefault()" novalidate="">
+      <div class="field">
+        <label>1. Pilih Menu &amp; Jumlah</label>
+        <div class="cart" id="cart"></div>
+        <p class="err" id="e-cart">Pilih minimal 1 menu dulu ya.</p>
+      </div>
+      <div class="field">
+        <label for="o-name">2. Nama Lengkap</label>
+        <input id="o-name" class="input" placeholder="Contoh: Budi Santoso" autocomplete="name">
+        <p class="err" id="e-name">Nama wajib diisi.</p>
+      </div>
+      <div class="field">
+        <label for="o-phone">3. Nomor WhatsApp <em>(opsional)</em></label>
+        <input id="o-phone" type="tel" class="input" placeholder="08xx atau +628xx" autocomplete="tel" inputmode="tel" oninput="renderTotals()">
+        <p class="err" id="e-phone">Nomor harus diawali 08 atau +628 (10–15 digit).</p>
+      </div>
+      <div class="field">
+        <label for="o-email">4. Email kamu <em>(opsional)</em></label>
+        <input id="o-email" type="email" class="input" placeholder="nama@email.com" autocomplete="email" oninput="renderTotals()">
+        <p class="err" id="e-email">Format email tidak valid.</p>
+      </div>
+      <div class="field">
+        <label>Poin Ulumunch</label>
+        <div class="ptsbox" id="pts-box"></div>
+      </div>
+      <div class="field">
+        <label>5. Metode Pembayaran</label>
+        <div class="pay" id="pay"></div>
+        <div id="pay-info"></div>
+      </div>
+      <div class="field">
+        <label for="o-note">Catatan <em>(opsional)</em></label>
+        <textarea id="o-note" class="input" rows="2" placeholder="Contoh: Basreng extra pedas"></textarea>
+      </div>
+      <div class="total"><div><small>Total Bayar</small><span class="tdisc" id="o-disc"></span></div><b id="o-total">Rp 0</b></div>
+      <button type="button" id="o-submit" class="btn btn-purple btn-block btn-lg" onclick="submitOrder(event)"><span data-i="check"></span> Konfirmasi Pre-Order</button>
+    </form>
+  </div>
+</div>
+<div class="modal" id="m-receipt" role="dialog" aria-modal="true">
+  <div class="card mbox" style="text-align:center">
+    <div class="okic"><span data-i="check"></span></div>
+    <h3 style="font-size:28px">Pre-Order Tercatat!</h3>
+    <p style="color:#5a4a3e;font-weight:600;margin:6px 0 16px">Stok sudah dipesan untukmu. Langkah terakhir: kirim pesanan ke email Saladin.</p>
+    <div class="receipt" id="receipt" style="text-align:left"></div>
+    <div id="r-qris"></div>
+    <p class="must"><span data-i="mail"></span> WAJIB: kirim email pesanan ke <b>Saladin@lazuardi.sch.id</b>. WhatsApp hanya opsional.</p>
+    <div class="stack" style="gap:12px">
+      <a id="r-mail" class="btn btn-purple btn-block btn-lg" onclick="markEmail()"><span data-i="mail"></span> Kirim Email ke Saladin (Wajib)</a>
+      <a id="r-wa" class="btn btn-green btn-block" target="_blank" rel="noopener"><span data-i="wa"></span> Kirim ke WhatsApp (Opsional)</a>
+      <button class="btn btn-white btn-block" onclick="copyReceipt()"><span data-i="copy"></span> Salin Ringkasan</button>
+      <button class="btn btn-white btn-block" id="r-close" onclick="closeM('m-receipt')">Tutup</button>
+    </div>
+  </div>
+</div>
+<div class="modal" id="m-menu" role="dialog" aria-modal="true">
+  <div class="card mbox">
+    <button class="x" onclick="closeM('m-menu')" aria-label="Tutup"><span data-i="x"></span></button>
+    <div class="mtitle"><div class="ic"><span data-i="food"></span></div><h3 id="mn-head">Tambah Menu</h3></div>
+    <form onsubmit="event.preventDefault()" novalidate="">
+      <input type="hidden" id="mn-id">
+      <div class="field"><label for="mn-title">Nama Menu</label><input id="mn-title" class="input" required=""></div>
+      <div class="grid2">
+        <div class="field"><label for="mn-price">Harga (Rp)</label><input id="mn-price" type="number" min="0" step="500" class="input" required=""></div>
+        <div class="field"><label for="mn-unit">Isi <em>(opsional)</em></label><input id="mn-unit" class="input" placeholder="isi 5"></div>
+      </div>
+      <div class="field"><label for="mn-desc">Deskripsi</label><textarea id="mn-desc" class="input" rows="2" required=""></textarea></div>
+      <div class="grid2">
+        <div class="field"><label for="mn-stock">Stok</label><input id="mn-stock" type="number" min="0" class="input" required=""></div>
+        <div class="field"><label for="mn-emoji">Emoji <em>(juga dipakai di hiasan)</em></label><input id="mn-emoji" class="input" value="🍢" maxlength="4"></div>
+      </div>
+      <div class="field"><label for="mn-color">Warna</label>
+        <select id="mn-color" class="input"><option value="#d9c8e8">Ungu</option><option value="#e8d3bd">Cokelat</option><option value="#dfe3c4">Hijau Olive</option><option value="#fbe3c2">Krem</option></select></div>
+      <div class="field"><label class="check" for="mn-ex"><input type="checkbox" id="mn-ex"> ⭐ Menu Exclusive (edisi terbatas)</label></div>
+      <div class="field"><label for="mn-img">URL Gambar <em>(opsional)</em></label><input id="mn-img" type="url" class="input" placeholder="https://..."></div>
+      <button class="btn btn-dark btn-block btn-lg" type="button" onclick="saveMenu(event)">Simpan Menu</button>
+    </form>
+  </div>
+</div>
+<div class="modal" id="m-gallery" role="dialog" aria-modal="true">
+  <div class="card mbox">
+    <button class="x" onclick="closeM('m-gallery')" aria-label="Tutup"><span data-i="x"></span></button>
+    <div class="mtitle"><div class="ic"><span data-i="camera"></span></div><h3>Tambah Foto</h3></div>
+    <form onsubmit="event.preventDefault()" novalidate="">
+      <div class="field"><label for="g-title">Judul</label><input id="g-title" class="input" required=""></div>
+      <div class="field"><label for="g-tag">Kategori</label><input id="g-tag" class="input" value="Dokumentasi"></div>
+      <div class="field"><label for="g-img">URL Gambar</label><input id="g-img" type="url" class="input" placeholder="https://..." required=""></div>
+      <button class="btn btn-dark btn-block btn-lg" type="button" onclick="saveGallery(event)">Simpan Foto</button>
+    </form>
+  </div>
+</div>
+<div class="modal" id="m-ann" role="dialog" aria-modal="true">
+  <div class="card mbox">
+    <button class="x" onclick="closeM('m-ann')" aria-label="Tutup"><span data-i="x"></span></button>
+    <div class="mtitle"><div class="ic"><span data-i="horn"></span></div><h3 id="ann-ed-title">Buat Pengumuman</h3></div>
+    <form onsubmit="event.preventDefault()" novalidate="">
+      <input type="hidden" id="a-id">
+      <div class="field"><label for="a-title">Judul</label><input id="a-title" class="input" required=""></div>
+      <div class="field"><label for="a-desc">Isi Pengumuman</label><textarea id="a-desc" class="input" rows="5" required=""></textarea></div>
+      <button class="btn btn-dark btn-block btn-lg" type="button" id="ann-ed-btn" onclick="saveAnn(event)">Terbitkan</button>
+    </form>
+  </div>
+</div>
+<div class="modal" id="m-confirm" role="dialog" aria-modal="true">
+  <div class="card mbox" style="max-width:400px;text-align:center">
+    <div class="okic" style="background:#f8d3cf;color:var(--red)"><span data-i="trash"></span></div>
+    <h3 style="font-size:22px;margin-bottom:8px">Yakin?</h3>
+    <p id="c-msg" style="color:#5a4a3e;font-weight:600;margin-bottom:20px"></p>
+    <div class="grid2">
+      <button class="btn btn-white" onclick="closeM('m-confirm')">Batal</button>
+      <button class="btn btn-red" onclick="confirmYes()">Ya, Lanjut</button>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+<script>
+const MANAGER_PIN = "19056";
+const ORDER_EMAIL = "Saladin@lazuardi.sch.id";
+const ORDER_WA    = "6288210597114";
+const LOKASI      = "dekat Lapangan Alfarabi, SMP Lazuardi (snack time)";
+const POSTER_DATE = "Rabu, 23 September 2026";
+const POINT_EVERY = 10000;
+const POINT_VALUE = 2000;
+const TEAM = [
+  {name:'Saladin', role:'CEO',        phone:'+62 811-835-113',   wa:'62811835113',   bg:'#1e8fff', photo:''},
+  {name:'Gines',   role:'Finance',    phone:'+62 818-802-282',   wa:'62818802282',   bg:'#7f8f4e', photo:''},
+  {name:'Aim',     role:'Marketing',  phone:'+62 882-1059-7114', wa:'6288210597114', bg:'#25a35a', photo:''},
+  {name:'Andana',  role:'Production', phone:'+62 815-1700-3430', wa:'6281517003430', bg:'#e07a3a', photo:''},
+  {name:'Hazim',   role:'Promotion',  phone:'+62 823-1920-1191', wa:'6282319201191', bg:'#6e3f8f', photo:''},
+  {name:'Neysha',  role:'BA',         phone:'+62 859-0041-2113', wa:'6285900412113', bg:'#d96aa7', photo:''}
+];
+const ICONS = {
+  home:'<path d="M3 11.5 12 3l9 8.5V21h-6.5v-6h-5v6H3z"/>',
+  food:'<path d="M5 2h1.6v6.5h1V2h1.6v6.5h1V2H12v8a2.6 2.6 0 0 1-2 2.5V22H7.4v-9.5A2.6 2.6 0 0 1 5 10zM18.5 2C16 2 14.5 4.8 14.5 9v4.5h2.3V22h2.7V2z"/>',
+  image:'<path d="M2 4h20v16H2zm2.5 2.5v11h15v-11z"/><path d="M5.5 16.5 10 11l3 3.5 2-2.5 3.5 4.5z"/><circle cx="16" cy="9" r="1.8"/>',
+  horn:'<path d="M3 9.5h3.5L15 4v16l-8.5-5.5H3z"/><path d="M6.5 15h3l1.5 6H8zM17 8.5a4.5 4.5 0 0 1 0 7v-2.4a2.3 2.3 0 0 0 0-2.2z"/>',
+  user:'<circle cx="12" cy="7.5" r="4.5"/><path d="M3 21.5c0-5 4-8.5 9-8.5s9 3.5 9 8.5z"/>',
+  lock:'<path d="M6 10V7.5a6 6 0 0 1 12 0V10h1.5v12h-15V10zm3 0h6V7.5a3 3 0 0 0-6 0z"/>',
+  unlock:'<path d="M4.5 10h15v12h-15z"/><path d="M7 10V7.5a5 5 0 0 1 9.6-2" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>',
+  plus:'<path d="M10 3.5h4V10h6.5v4H14v6.5h-4V14H3.5v-4H10z"/>',
+  arrow:'<path d="M3.5 10.5H15L10.8 6.3 12.9 4.2l7.8 7.8-7.8 7.8-2.1-2.1 4.2-4.2H3.5z"/>',
+  star:'<path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7L12 17.6l-6.2 3.5 1.4-7L2 9.3l7-.8z"/>',
+  mail:'<path d="M2 5h20v14H2zm2.5 2.2v.6L12 12.6l7.5-4.8v-.6z"/>',
+  pin:'<path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>',
+  cash:'<path d="M2 6h20v12H2zm10 2.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM4.5 8.5v2a2 2 0 0 0 2-2zm15 7v-2a2 2 0 0 0-2 2z"/>',
+  qr:'<path d="M3 3h8v8H3zm2 2v4h4V5zm1 1h2v2H6zM13 3h8v8h-8zm2 2v4h4V5zm1 1h2v2h-2zM3 13h8v8H3zm2 2v4h4v-4zm1 1h2v2H6zM13 13h3v3h-3zm5 0h3v3h-3zm-5 5h3v3h-3zm5 0h3v3h-3z"/>',
+  wa:'<path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.3A10 10 0 1 0 12 2zM8.8 6.8c-.5 0-1.3.6-1.3 1.6 0 3.8 4.3 8.6 8.4 8.6 1 0 1.6-.8 1.6-1.3v-1.5l-2.6-1.2-1.1 1.3a6.4 6.4 0 0 1-3.6-3.6l1.3-1.1-1.2-2.6z"/>',
+  trash:'<path d="M9 2.5h6l1 2h4.5V7h-17V4.5H8zM5.5 8.5h13L17.3 22H6.7z"/>',
+  pen:'<path d="M3.5 17.3V20.5h3.2L16.8 10.4l-3.2-3.2zM15 5.8l3.2 3.2 2-2a1.2 1.2 0 0 0 0-1.7l-1.5-1.5a1.2 1.2 0 0 0-1.7 0z"/>',
+  x:'<path d="M6 3.8 3.8 6l6 6-6 6L6 20.2l6-6 6 6 2.2-2.2-6-6 6-6L18 3.8l-6 6z"/>',
+  check:'<path d="M9 16.2 4.6 11.8 2.4 14 9 20.6 21.6 8 19.4 5.8z"/>',
+  copy:'<path d="M8 2h13v14H8zM3 7h3v12h11v3H3z"/>',
+  camera:'<path d="M3 7h4l2-3h6l2 3h4v13H3zm9 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>',
+  logout:'<path d="M3 3h10v4.5h-2.5v-2h-5v13h5v-2H13V21H3zM16 7l5.5 5-5.5 5v-3.3H8.5v-3.4H16z"/>',
+  cal:'<path d="M3 5h18v17H3zm2.5 5.5V19.5h13v-9zM7 2h2.5v5H7zm7.5 0H17v5h-2.5z"/>'
+};
+const I = (n, cls='') => `<span class="i ${cls}"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true">${ICONS[n] || ''}</svg></span>`;
+function hydrateIcons(root=document){ root.querySelectorAll('[data-i]').forEach(el => { el.outerHTML = I(el.dataset.i, el.className); }); }
+function headSVG(bg){
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">
+    <rect width="100" height="100" fill="${bg}"/>
+    <circle cx="48" cy="58" r="30" fill="#fff" stroke="#111" stroke-width="5"/>
+    <path d="M30 70 Q48 84 70 68" fill="none" stroke="#e8e8e8" stroke-width="5" opacity=".7"/>
+    <circle cx="35" cy="60" r="3.6" fill="#111"/><circle cx="64" cy="55" r="3.6" fill="#111"/>
+    <path d="M36 70 L68 65" stroke="#111" stroke-width="4.5" stroke-linecap="round"/>
+    <g transform="rotate(18 66 22)"><path d="M54 32 L52 12 L60 20 L66 9 L72 20 L80 12 L78 32 Z" fill="#f5d90a" stroke="#111" stroke-width="4" stroke-linejoin="round"/></g></svg>`;
+}
+const ART = {
+cimol:`<svg viewBox="0 0 200 160" aria-hidden="true">
+<rect x="0" y="56" width="50" height="15" rx="7" fill="#2f2f2f" stroke="#2b1a10" stroke-width="3" transform="rotate(-16 25 63)"/>
+<ellipse cx="114" cy="94" rx="80" ry="52" fill="#2f2f2f" stroke="#2b1a10" stroke-width="3"/>
+<ellipse cx="114" cy="90" rx="68" ry="41" fill="#404040"/>
+<g fill="#f3d9a8" stroke="#2b1a10" stroke-width="2.5">
+<circle cx="96" cy="64" r="12"/><circle cx="122" cy="62" r="12"/><circle cx="146" cy="70" r="12"/>
+<circle cx="78" cy="80" r="12"/><circle cx="104" cy="82" r="13"/><circle cx="130" cy="84" r="13"/><circle cx="156" cy="90" r="12"/>
+<circle cx="86" cy="102" r="12"/><circle cx="112" cy="104" r="13"/><circle cx="138" cy="106" r="12"/><circle cx="68" cy="96" r="11"/></g>
+<g fill="#d2401f"><circle cx="100" cy="78" r="2.4"/><circle cx="108" cy="84" r="2.4"/><circle cx="118" cy="76" r="2"/><circle cx="126" cy="82" r="2.4"/><circle cx="114" cy="92" r="2"/><circle cx="104" cy="96" r="2.4"/><circle cx="134" cy="94" r="2"/><circle cx="92" cy="88" r="2"/><circle cx="122" cy="66" r="2"/><circle cx="96" cy="62" r="2"/><circle cx="146" cy="76" r="2"/><circle cx="84" cy="104" r="2"/></g></svg>`,
+basreng:`<svg viewBox="0 0 200 160" aria-hidden="true">
+<g stroke="#2b1a10" stroke-width="2.5" stroke-linejoin="round">
+<rect x="50" y="40" width="64" height="15" rx="5" fill="#c9773b" transform="rotate(-14 82 47)"/>
+<rect x="92" y="32" width="64" height="15" rx="5" fill="#b8652e" transform="rotate(12 124 39)"/>
+<rect x="60" y="58" width="66" height="15" rx="5" fill="#d88a4a" transform="rotate(6 93 65)"/>
+<rect x="100" y="56" width="62" height="15" rx="5" fill="#c9773b" transform="rotate(-10 131 63)"/>
+<rect x="40" y="70" width="60" height="14" rx="5" fill="#b8652e" transform="rotate(-4 70 77)"/>
+<rect x="110" y="74" width="56" height="14" rx="5" fill="#d88a4a" transform="rotate(8 138 81)"/></g>
+<g fill="#5a2a12"><circle cx="70" cy="46" r="2"/><circle cx="88" cy="44" r="1.8"/><circle cx="114" cy="38" r="2"/><circle cx="136" cy="44" r="1.8"/><circle cx="80" cy="64" r="2"/><circle cx="104" cy="66" r="1.8"/><circle cx="124" cy="62" r="2"/><circle cx="148" cy="58" r="1.8"/><circle cx="58" cy="77" r="2"/><circle cx="128" cy="80" r="2"/></g>
+<path d="M24 86 H176 Q172 140 130 148 H70 Q28 140 24 86 Z" fill="#8a5126" stroke="#2b1a10" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34 100 Q100 112 166 100" stroke="#6b3c1a" stroke-width="3" fill="none"/>
+<path d="M24 86 H176" stroke="#2b1a10" stroke-width="5" stroke-linecap="round"/></svg>`,
+milo:`<svg viewBox="0 0 200 160" aria-hidden="true">
+<path d="M64 42 H136 L127 154 H73 Z" fill="#f4ead9"/>
+<path d="M70 66 C90 78 102 56 130 70 M72 96 C92 110 106 88 128 100 M74 126 C90 138 106 120 125 130" stroke="#7a4a2a" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M75 140 H126 L127 154 H73 Z" fill="#7a4a2a"/>
+<path d="M56 46 Q58 6 100 4 Q142 6 144 46 Z" fill="#8b5a3c" stroke="#2b1a10" stroke-width="3" stroke-linejoin="round"/>
+<g fill="#6b4029"><circle cx="80" cy="30" r="2"/><circle cx="96" cy="18" r="2"/><circle cx="114" cy="26" r="2"/><circle cx="126" cy="36" r="2"/><circle cx="88" cy="40" r="1.6"/><circle cx="106" cy="38" r="1.6"/></g>
+<path d="M70 52 L78 146" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+<path d="M64 42 H136 L127 154 H73 Z" fill="none" stroke="#2b1a10" stroke-width="3" stroke-linejoin="round"/></svg>`,
+scoop:`<svg viewBox="0 0 200 160" aria-hidden="true">
+<g stroke="#2b1a10" stroke-width="3" stroke-linejoin="round">
+<circle cx="76" cy="66" r="27" fill="#f7c6d6"/>
+<circle cx="124" cy="66" r="27" fill="#8b5a3c"/>
+<circle cx="100" cy="42" r="26" fill="#fff3c4"/>
+<path d="M46 80 H154 L140 152 H60 Z" fill="#6e3f8f"/>
+<path d="M50 96 H150" stroke-width="2.5"/></g>
+<circle cx="100" cy="14" r="8" fill="#d6332a" stroke="#2b1a10" stroke-width="2.5"/>
+<path d="M101 7 q4 -8 11 -6" stroke="#2b1a10" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<g stroke="#2b1a10" stroke-width="1.5">
+<rect x="86" y="34" width="9" height="3.5" rx="1.7" fill="#25a35a" transform="rotate(25 90 36)"/>
+<rect x="106" y="44" width="9" height="3.5" rx="1.7" fill="#1e8fff" transform="rotate(-30 110 46)"/>
+<rect x="94" y="52" width="9" height="3.5" rx="1.7" fill="#e07a3a" transform="rotate(60 98 54)"/>
+<rect x="64" y="60" width="9" height="3.5" rx="1.7" fill="#f6c945" transform="rotate(-20 68 62)"/>
+<rect x="128" y="58" width="9" height="3.5" rx="1.7" fill="#f7c6d6" transform="rotate(35 132 60)"/></g>
+<path d="M100 108 l4 9 9 1 -7 6 2 9 -8 -5 -8 5 2 -9 -7 -6 9 -1z" fill="#f6c945" stroke="#2b1a10" stroke-width="2"/></svg>`
+};
+const PILL = {cimol:'#5b3a24', basreng:'#6e3f8f', milo:'#7f8f4e', scoop:'#e07a3a'};
+const DEF = {
+  menu:[
+    {id:4,title:'Scoopable Exclusive',price:15000,unit:'1 cup',desc:'Menu spesial edisi terbatas — cuma ada 10 porsi! Siapa cepat dia dapat.',art:'scoop',emoji:'🍨',color:'#fbe3c2',stock:10,exclusive:true},
+    {id:1,title:'Cimol',price:8000,unit:'isi 5',desc:'Cimol kenyal digoreng hangat, ditabur bumbu balado pedas gurih. Isi 5 butir.',art:'cimol',emoji:'🍡',color:'#d9c8e8',stock:25},
+    {id:2,title:'Basreng',price:10000,unit:'isi 4',desc:'Bakso goreng iris, super kriuk dengan bumbu pedas daun jeruk. Isi 4 potong.',art:'basreng',emoji:'🌶️',color:'#e8d3bd',stock:25},
+    {id:3,title:'Milo Dino',price:10000,unit:'',desc:'Susu Milo dingin dengan gunungan bubuk cokelat di atasnya. Segar, manis, penawar pedas!',art:'milo',emoji:'🦖',color:'#dfe3c4',stock:20}
+  ],
+  gallery:[
+    {id:1,title:'Produksi di Dapur SMP Lazuardi',tag:'Dapur',ico:'🔥',color:'#e8d3bd'},
+    {id:2,title:'Jualan Saat Snack Time',tag:'Produk',ico:'🌶️',color:'#d9c8e8'},
+    {id:3,title:'Tim Class 7 Uluru',tag:'Tim',ico:'👥',color:'#dfe3c4'}
+  ],
+  ann:[
+    {id:3,date:'2026-10-08',title:'Baru! Scoopable Exclusive & Poin Ulumunch ⭐',content:'Scoopable Exclusive cuma ada 10 porsi — siapa cepat dia dapat!\nSetiap belanja Rp10.000 dapat 1 poin (1 poin = potongan Rp2.000).\nSekarang bisa bayar Cash atau QRIS.'},
+    {id:1,date:'2026-10-01',title:'Pre-Order Batch Oktober Dibuka!',content:'Cimol, Basreng, dan Milo Dino sudah bisa dipesan. Ambil di dekat Lapangan Alfarabi saat snack time.'},
+    {id:2,date:'2026-09-23',title:'Menu Ulumunch Rilis 🦖',content:'Cimol 8K isi 5, Basreng 10K isi 4, dan Milo Dino 10K. Makan enak bikin hari lebih ceria!'}
+  ],
+  orders:[
+    {id:'ULU-DEMO1',name:'Contoh Pembeli',phone:'081234567890',email:'',note:'Pedas sedang',
+     items:[{id:2,title:'Basreng',price:10000,qty:1},{id:3,title:'Milo Dino',price:10000,qty:1}],
+     subtotal:20000,usedPts:0,discount:0,total:20000,earnedPts:2,member:'wa:6281234567890',credited:false,
+     payment:'Cash',emailSent:true,status:'Menunggu',date:'2026-10-01'}
+  ],
+  points:{},
+  settings:{qris:'',qrisName:''}
+};
+let S = JSON.parse(JSON.stringify(DEF));
+let mgr = false, cart = {}, usePts = 0, payMethod = 'Cash', lastOrder = null, confirmCb = null, busy = false, receiptUnlocked = false;
+let memberKeys = [], lastTicker = '', lastDeco = '';
+const $ = id => document.getElementById(id);
+const rp = n => 'Rp ' + Number(n||0).toLocaleString('id-ID');
+const kk = n => (n % 1000 === 0) ? (n/1000) + 'K' : rp(n);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const col = c => /^#[0-9a-f]{3,8}$/i.test(c||'') ? c : '#fbe3c2';
+const today = () => new Date().toLocaleDateString('sv-SE');
+const waNum = p => { let d = String(p).replace(/\D/g,''); if (d.startsWith('0')) d = '62' + d.slice(1); return d; };
+const validPhone = p => /^(\+62|62|0)8[1-9][0-9]{7,11}$/.test(p.replace(/[\s-]/g,''));
+const validEmail = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+const byId = id => S.menu.find(m => m.id === id);
+const stockOf = m => Math.max(0, parseInt(m.stock) || 0);
+const sortedMenu = () => [...S.menu].sort((a,b) => (b.exclusive ? 1 : 0) - (a.exclusive ? 1 : 0));
+const memberId = (phone, email) => {
+  if (phone && validPhone(phone)) return 'wa:' + waNum(phone);
+  if (email && validEmail(email)) return 'em:' + email.toLowerCase();
+  return '';
+};
+const showId = k => k.startsWith('wa:') ? '+' + k.slice(3) : k.slice(3);
+function media(m){
+  let h = ART[m.art] || `<span class="emoji">${esc(m.emoji || '🍽️')}</span>`;
+  if (m.image) h += `<img src="${esc(m.image)}" alt="${esc(m.title)}" onerror="this.remove()">`;
+  return h;
+}
+function stockTag(m){
+  const s = stockOf(m);
+  if (s <= 0) return '<span class="stk out">Stok habis</span>';
+  if (m.exclusive || s <= 5) return `<span class="stk low">Sisa ${s} porsi</span>`;
+  return `<span class="stk">Stok ${s}</span>`;
+}
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2800); }
+function openM(id){ $(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeM(id, force){
+  if (id === 'm-receipt' && !force && !receiptUnlocked){ toast(`Kirim email ke ${ORDER_EMAIL} dulu ya (atau salin ringkasan)`); return; }
+  $(id).classList.remove('open'); if(!document.querySelector('.modal.open')) document.body.style.overflow='';
+}
+function ask(msg, cb){ $('c-msg').textContent = msg; confirmCb = cb; openM('m-confirm'); }
+function confirmYes(){ closeM('m-confirm'); if (confirmCb) confirmCb(); confirmCb = null; }
+const KEYS = {menu:'ulumunch4-menu',gallery:'ulumunch4-gallery',ann:'ulumunch4-ann',orders:'ulumunch4-orders',points:'ulumunch4-points',settings:'ulumunch4-settings'};
+// --- localStorage helpers ---
+function sget(key){
+  try { return localStorage.getItem(key); } catch(e){ return null; }
+}
+function sset(key, val){
+  try { localStorage.setItem(key, val); return true; } catch(e){ console.warn('Gagal menyimpan ke localStorage', e); return false; }
+}
+function sremove(key){
+  try { localStorage.removeItem(key); } catch(e){}
+}
+// Load one category from localStorage into S
+function load(k){ const v = sget(KEYS[k]); if (v){ try { S[k] = JSON.parse(v); } catch(e){} } }
+// Alias kept async-compatible for existing callers
+async function fresh(...ks){ for (const k of ks) load(k); }
+async function loadAll(){ Object.keys(KEYS).forEach(k => load(k)); }
+const save = k => sset(KEYS[k], JSON.stringify(S[k]));
+// Synchronously hydrate state from localStorage on first load
+(function initFromStorage(){
+  Object.keys(KEYS).forEach(k => load(k));
+})();
+// Reset all persisted data back to defaults
+function resetAllData(){
+  if (!mgr) return;
+  ask('Hapus SEMUA data tersimpan (menu, pesanan, galeri, pengumuman, poin, QRIS) dan kembalikan ke default?', () => {
+    Object.values(KEYS).forEach(k => sremove(k));
+    S = JSON.parse(JSON.stringify(DEF));
+    renderAll(); toast('Semua data direset ke default ✅');
+  });
+}
+// Export all data as a JSON file download
+function exportData(){
+  if (!mgr) return;
+  const data = {};
+  Object.keys(KEYS).forEach(k => data[k] = S[k]);
+  data._exported = new Date().toISOString();
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `ulumunch-backup-${today()}.json`;
+  a.click(); URL.revokeObjectURL(a.href);
+  toast('Data berhasil di-export ✅');
+}
+// Import data from a JSON backup file
+function importData(inp){
+  if (!mgr){ toast('Login Manager dulu'); return; }
+  const f = inp.files[0]; if (!f) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = JSON.parse(reader.result);
+      const valid = Object.keys(KEYS).some(k => data[k] != null);
+      if (!valid){ toast('File tidak valid'); inp.value = ''; return; }
+      ask('Import data dari file? Data saat ini akan ditimpa.', () => {
+        Object.keys(KEYS).forEach(k => { if (data[k] != null){ S[k] = data[k]; save(k); } });
+        renderAll(); toast('Data berhasil di-import ✅');
+      });
+    } catch(e){ toast('Gagal membaca file JSON'); }
+    inp.value = '';
+  };
+  reader.readAsText(f);
+}
+function go(tab){
+  ['beranda','menu','galeri','pengumuman','manager'].forEach(t => $('page-'+t).classList.toggle('hide', t !== tab));
+  document.querySelectorAll('.tab').forEach(b => b.classList.toggle('on', b.dataset.go === tab));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]'); if (g){ e.preventDefault(); go(g.dataset.go); }
+  if (e.target.classList.contains('modal')) closeM(e.target.id);
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal.open').forEach(m => closeM(m.id)); });
+function renderTicker(){
+  const parts = sortedMenu().map(m => {
+    const s = stockOf(m);
+    let t = `${m.emoji || '🍽️'} ${m.title.toUpperCase()} ${kk(m.price)}${m.unit ? ' ' + m.unit.toUpperCase() : ''}`;
+    if (s <= 0) t += ' · HABIS';
+    else if (m.exclusive) t += ` · ⭐ EXCLUSIVE SISA ${s}`;
+    return t;
+  });
+  parts.push('💵 CASH / 📱 QRIS', '⭐ TIAP 10K = 1 POIN', '📍 DEKAT LAPANGAN ALFARABI SAAT SNACK TIME');
+  const one = parts.map(esc).join(' &nbsp;★&nbsp; ') + ' &nbsp;★&nbsp; ';
+  if (one === lastTicker) return;
+  lastTicker = one;
+  const el = $('ticker');
+  el.innerHTML = one + one;
+  el.style.animationDuration = Math.max(22, parts.length * 6) + 's';
+}
+const DECO_POS = [[1.5,16],[96,22],[3,44],[94.5,54],[2,74],[96.5,84],[30,6],[72,9],[1,92],[93,38]];
+function renderDeco(){
+  const em = [...new Set(S.menu.map(m => m.emoji || '🍽️'))];
+  const pool = [];
+  em.forEach(e => pool.push(e, '✨'));
+  pool.push('⭐','💫');
+  const key = pool.join('|');
+  if (key === lastDeco) return;
+  lastDeco = key;
+  $('deco').innerHTML = DECO_POS.map((p,i) =>
+    `<span style="left:${p[0]}%;top:${p[1]}%;animation-delay:${(i*0.6).toFixed(1)}s;animation-duration:${6 + i%4}s">${esc(pool[i % pool.length])}</span>`).join('');
+}
+function renderHero(){
+  $('p-date').innerHTML = I('cal') + ' ' + POSTER_DATE;
+  $('hero-stack').innerHTML = sortedMenu().slice(0,4).map(m => { const out = stockOf(m) <= 0; return `
+    <button class="pitem${m.exclusive ? ' ex' : ''}" onclick="openOrder(${m.id})" aria-label="Pesan ${esc(m.title)}">
+      <div class="pblob" style="background:${col(m.color)}">${media(m)}</div>
+      <div class="pinfo">
+        ${m.exclusive ? `<span class="exmini">${I('star')} EXCLUSIVE · SISA ${stockOf(m)}</span>` : ''}
+        <span class="pname" style="background:${m.exclusive ? PILL.scoop : (PILL[m.art] || '#6e3f8f')}">${esc(m.title)}</span>
+        <span class="pprice">${kk(m.price)}${m.unit ? `<small>${esc(m.unit)}</small>` : ''}</span>
+      </div>
+      <span class="plus" aria-hidden="true">${out ? '<small>HABIS</small>' : '+'}</span>
+    </button>`; }).join('');
+}
+function renderTeam(){
+  $('team-grid').innerHTML = TEAM.map(t => `
+    <div class="card tcard">
+      <div class="head">${t.photo ? `<img src="${esc(t.photo)}" alt="Foto ${t.name}">` : headSVG(t.bg)}</div>
+      <div class="who"><b>${t.name}</b><span class="role" style="background:${t.bg};color:#fff">${t.role}</span><span class="num">${t.phone}</span></div>
+      <a class="btn btn-green btn-sm" href="https://wa.me/${t.wa}" target="_blank" rel="noopener">${I('wa')} Chat</a>
+    </div>`).join('');
+  $('footer-team').innerHTML = TEAM.map(t => `<li>${I('wa')}<a href="https://wa.me/${t.wa}" target="_blank" rel="noopener">${t.name} (${t.role})<br>${t.phone}</a></li>`).join('');
+}
+function renderMenu(){
+  $('menu-grid').innerHTML = sortedMenu().map(m => { const out = stockOf(m) <= 0; return `
+    <div class="card mcard${m.exclusive ? ' ex' : ''}">
+      <div class="media" style="background:${col(m.color)}">${media(m)}
+        ${m.exclusive ? `<span class="excl">${I('star')} EXCLUSIVE</span>` : ''}
+        <span class="price">${kk(m.price)}${m.unit ? `<small>${esc(m.unit)}</small>` : ''}</span>
+        ${out ? '<div class="soldout"><span>HABIS!</span></div>' : ''}
+      </div>
+      <div class="mbody">
+        <h3>${esc(m.title)}</h3>
+        ${stockTag(m)}
+        <p>${esc(m.desc)}</p>
+        <div class="mact">
+          <button class="btn btn-dark" onclick="openOrder(${m.id})" ${out ? 'disabled' : ''}>${I('plus')} ${out ? 'Stok Habis' : 'Pesan'}</button>
+          ${mgr ? `<button class="btn btn-white btn-sq" onclick="openMenuEditor(${m.id})" aria-label="Edit menu">${I('pen')}</button>
+                   <button class="btn btn-red btn-sq" onclick="delMenu(${m.id})" aria-label="Hapus menu">${I('trash')}</button>` : ''}
+        </div>
+      </div>
+    </div>`; }).join('') || '<p>Belum ada menu.</p>';
+  renderHero();
+}
+function renderGallery(){
+  $('gallery-grid').innerHTML = S.gallery.map(g => `
+    <div class="card gcard">
+      <div class="gmedia" style="background:${col(g.color)}">
+        <span>${esc(g.ico || '📷')}</span>
+        ${g.image ? `<img src="${esc(g.image)}" alt="${esc(g.title)}" onerror="this.remove()">` : ''}
+        <span class="gtag">${esc(g.tag)}</span>
+      </div>
+      <div class="gbody"><b>${esc(g.title)}</b>
+        ${mgr ? `<button class="btn btn-red btn-sm btn-sq" onclick="delGallery(${g.id})" aria-label="Hapus foto">${I('trash')}</button>` : ''}
+      </div>
+    </div>`).join('') || '<p>Belum ada foto.</p>';
+}
+function renderAnn(){
+  $('latest-ann').textContent = S.ann.length ? `${S.ann[0].title} — ${S.ann[0].content.replace(/\n/g,' ')}` : 'Belum ada pengumuman.';
+  $('ann-list').innerHTML = S.ann.map(a => `
+    <div class="card acard">
+      <div><span class="date">${I('cal')} ${esc(a.date)}</span><h3>${esc(a.title)}</h3><p>${esc(a.content)}</p></div>
+      ${mgr ? `<div class="acts">
+        <button class="btn btn-white btn-sm" onclick="openAnnEditor(${a.id})">${I('pen')} Ganti</button>
+        <button class="btn btn-red btn-sm btn-sq" onclick="delAnn(${a.id})" aria-label="Hapus pengumuman">${I('trash')}</button>
+      </div>` : ''}
+    </div>`).join('') || '<div class="card acard"><p>Belum ada pengumuman.</p></div>';
+}
+function renderOrders(){
+  const O = S.orders;
+  $('order-count').textContent = `${O.length} Pesanan`;
+  const cnt = s => O.filter(o => o.status === s).length;
+  const unpaid = O.filter(o => o.status !== 'Selesai').reduce((a,o) => a + (o.total||0), 0);
+  const habis = S.menu.filter(m => stockOf(m) <= 0).length;
+  $('stats').innerHTML = `
+    <div class="card stat"><small>Total Pesanan</small><b>${O.length}</b></div>
+    <div class="card stat" style="background:#ffe08a"><small>Menunggu</small><b>${cnt('Menunggu')}</b></div>
+    <div class="card stat" style="background:#d9c8e8"><small>Diproses</small><b>${cnt('Diproses')}</b></div>
+    <div class="card stat" style="background:#cfe8c0"><small>Belum Lunas</small><b>${rp(unpaid)}</b></div>
+    <div class="card stat" style="background:#f8d3cf"><small>Menu Habis</small><b>${habis}</b></div>
+    <div class="card stat" style="background:#fff4d6"><small>Poin Belum Dikonfirmasi</small><b>${O.filter(o => o.member && o.earnedPts && !o.credited).length}</b></div>`;
+  // Update localStorage usage info
+  try {
+    let totalBytes = 0;
+    Object.values(KEYS).forEach(k => { const v = localStorage.getItem(k); if (v) totalBytes += v.length * 2; });
+    const kb = (totalBytes / 1024).toFixed(1);
+    $('storage-info').innerHTML = `💾 Data tersimpan di localStorage browser ini (${kb} KB dipakai). Gunakan Export untuk backup.`;
+  } catch(e){}
+  if (!O.length){ $('orders-body').innerHTML = '<tr><td colspan="7" style="text-align:center;padding:28px;color:#7a6a5e">Belum ada pesanan masuk.</td></tr>'; return; }
+  $('orders-body').innerHTML = O.map(o => `
+    <tr>
+      <td><b>${esc(o.id)}</b><br><small>${esc(o.date)}</small><br>${o.emailSent ? '<small>✉️ email dikirim</small>' : '<small style="color:var(--red);font-weight:800">⚠️ email belum</small>'}</td>
+      <td><b>${esc(o.name)}</b>${o.note ? `<br><small>📝 ${esc(o.note)}</small>` : ''}</td>
+      <td>${o.phone ? `<a href="https://wa.me/${waNum(o.phone)}" target="_blank" rel="noopener">${esc(o.phone)}</a>` : '<small>-</small>'}${o.email ? `<br><small>${esc(o.email)}</small>` : ''}</td>
+      <td>${o.items.map(i => `${esc(i.title)} ×${i.qty}`).join('<br>')}</td>
+      <td><b>${rp(o.total)}</b><br><small>${o.payment === 'QRIS' ? '📱 QRIS' : '💵 Cash'}</small>
+        ${o.usedPts ? `<br><small>⭐ pakai ${o.usedPts} poin</small>` : ''}
+        ${o.earnedPts && o.member ? (o.credited
+          ? `<br><small>⭐ +${o.earnedPts} poin ✅ dikonfirmasi</small><br><button class="btn btn-white btn-sm" style="margin-top:6px" onclick="revokePts('${esc(o.id)}')">Batalkan Poin</button>`
+          : `<br><small style="color:#9b6a00;font-weight:800">⏳ +${o.earnedPts} poin belum dikonfirmasi</small><br><button class="btn btn-green btn-sm" style="margin-top:6px" onclick="confirmPts('${esc(o.id)}')">${I('check')} Konfirmasi Poin</button>`) : ''}</td>
+      <td><span class="badge st-${esc(o.status)}">${esc(o.status)}</span></td>
+      <td class="r">
+        <select class="input input-sm" onchange="setStatus('${esc(o.id)}', this.value)" aria-label="Ubah status">
+          ${['Menunggu','Diproses','Selesai'].map(s => `<option ${o.status===s?'selected':''}>${s}</option>`).join('')}
+        </select>
+        <button class="btn btn-red btn-sm btn-sq" onclick="delOrder('${esc(o.id)}')" aria-label="Hapus pesanan">${I('trash')}</button>
+      </td>
+    </tr>`).join('');
+}
+function renderMgr(){
+  if (!mgr) return;
+  $('stock-body').innerHTML = sortedMenu().map(m => `
+    <tr>
+      <td><b>${esc(m.title)}</b>${m.exclusive ? ' <span class="badge" style="background:var(--yellow);font-size:10px">EXCLUSIVE</span>' : ''}<br><small>${rp(m.price)}</small></td>
+      <td>${stockTag(m)}</td>
+      <td class="r"><div class="stkctl">
+        <button class="btn btn-white btn-sm btn-sq" onclick="bumpStock(${m.id},-1)" aria-label="Kurangi">−</button>
+        <input type="number" min="0" class="input input-sm" id="stk-${m.id}" value="${stockOf(m)}" aria-label="Stok ${esc(m.title)}">
+        <button class="btn btn-white btn-sm btn-sq" onclick="bumpStock(${m.id},1)" aria-label="Tambah">+</button>
+        <button class="btn btn-dark btn-sm" onclick="setStock(${m.id})">Simpan</button>
+      </div></td>
+    </tr>`).join('') || '<tr><td colspan="3">Belum ada menu.</td></tr>';
+  const st = S.settings || {};
+  $('qr-prev').innerHTML = st.qris ? `<div><img src="${esc(st.qris)}" alt="QRIS"><br><b>${esc(st.qrisName || 'QRIS Ulumunch')}</b></div>` : 'Belum ada QRIS.<br>Upload gambar QRIS supaya pembeli bisa bayar pakai QRIS.';
+  if (document.activeElement !== $('qr-name')) $('qr-name').value = st.qrisName || '';
+  const pend = S.orders.filter(o => o.member && o.earnedPts && !o.credited);
+  $('pending-count').textContent = pend.length;
+  $('pending-body').innerHTML = pend.map(o => `
+    <tr>
+      <td><b>${esc(o.id)}</b><br><small>${esc(o.date)}</small></td>
+      <td><b>${esc(o.name)}</b><br><small>${esc(showId(o.member))}</small></td>
+      <td><b>${rp(o.total)}</b><br><small>${o.payment === 'QRIS' ? '📱 QRIS' : '💵 Cash'}</small></td>
+      <td><span class="badge st-${esc(o.status)}">${esc(o.status)}</span></td>
+      <td class="r"><button class="btn btn-green btn-sm" onclick="confirmPts('${esc(o.id)}')">${I('check')} Konfirmasi +${o.earnedPts} poin</button></td>
+    </tr>`).join('') || '<tr><td colspan="5" style="text-align:center;padding:22px;color:#7a6a5e">Tidak ada poin yang menunggu konfirmasi.</td></tr>';
+  const P = Object.entries(S.points || {}).sort((a,b) => b[1].pts - a[1].pts);
+  memberKeys = P.map(p => p[0]);
+  $('members-body').innerHTML = P.map(([k,p], idx) => `
+    <tr>
+      <td><b>${esc(p.name)}</b></td>
+      <td><small>${esc(showId(k))}</small></td>
+      <td><b>${p.pts}</b><br><small>= ${rp(p.pts * POINT_VALUE)}</small></td>
+      <td class="r"><div class="stkctl">
+        <input type="number" min="0" class="input input-sm" id="pt-${idx}" value="${p.pts}" aria-label="Poin ${esc(p.name)}">
+        <button class="btn btn-dark btn-sm" onclick="setPts(${idx})">Simpan</button>
+      </div></td>
+    </tr>`).join('') || '<tr><td colspan="4" style="text-align:center;padding:22px;color:#7a6a5e">Belum ada member. Member otomatis tercatat saat pembeli mengisi No. WA / email.</td></tr>';
+}
+function renderAll(){ renderTicker(); renderDeco(); renderMenu(); renderGallery(); renderAnn(); renderOrders(); renderMgr(); }
+async function checkPts(){
+  const v = $('chk-id').value.trim();
+  const mid = memberId(v, v);
+  if (!mid){ $('chk-res').textContent = 'Masukkan No. WA (08xx) atau email yang valid.'; return; }
+  await fresh('points');
+  const p = S.points[mid];
+  $('chk-res').innerHTML = p ? `⭐ ${esc(p.name)}: <b>${p.pts} poin</b> = potongan ${rp(p.pts * POINT_VALUE)}` : 'Belum ada poin untuk data ini. Yuk pesan dulu!';
+}
+function openOrder(id){
+  cart = {}; usePts = 0;
+  if (id != null){
+    const m = byId(id);
+    if (m && stockOf(m) > 0) cart[id] = 1; else if (m) toast(`Maaf, ${m.title} sedang habis 🙏`);
+  }
+  ['o-name','o-phone','o-email','o-note'].forEach(x => $(x).value = '');
+  document.querySelectorAll('#m-order .err').forEach(e => e.classList.remove('show'));
+  if (!S.settings.qris) payMethod = 'Cash';
+  renderCart(); renderPay(); openM('m-order');
+}
+const cartItems = () => sortedMenu().filter(m => cart[m.id] > 0).map(m => ({id:m.id, title:m.title, price:m.price, qty:cart[m.id]}));
+const cartTotal = () => cartItems().reduce((a,i) => a + i.price*i.qty, 0);
+function renderCart(){
+  $('cart').innerHTML = sortedMenu().map(m => { const q = cart[m.id] || 0, s = stockOf(m); return `
+    <div class="line ${q ? 'on' : ''} ${s <= 0 ? 'out' : ''}">
+      <div class="thumb" style="background:${col(m.color)}">${media(m)}</div>
+      <div class="ln"><b>${esc(m.title)}${m.exclusive ? ' ⭐' : ''}</b><small>${rp(m.price)}${m.unit ? ' · ' + esc(m.unit) : ''}</small><small>${s <= 0 ? 'Habis' : 'Sisa ' + s}</small></div>
+      <div class="stepper">
+        <button type="button" onclick="step(${m.id},-1)" aria-label="Kurangi ${esc(m.title)}">−</button>
+        <span>${q}</span>
+        <button type="button" onclick="step(${m.id},1)" aria-label="Tambah ${esc(m.title)}">+</button>
+      </div>
+    </div>`; }).join('') || '<p>Belum ada menu.</p>';
+  renderTotals();
+}
+function step(id, d){
+  const m = byId(id); if (!m) return;
+  const q = (cart[id] || 0) + d;
+  if (q < 0) return;
+  if (q > stockOf(m)){ toast(stockOf(m) ? `Stok ${m.title} tinggal ${stockOf(m)}` : `${m.title} sedang habis`); return; }
+  if (q > 20) return;
+  cart[id] = q; renderCart(); if (q) $('e-cart').classList.remove('show');
+}
+function calc(){
+  const sub = cartTotal();
+  const mid = memberId($('o-phone').value.trim(), $('o-email').value.trim());
+  const bal = mid && S.points[mid] ? S.points[mid].pts : 0;
+  const maxUse = Math.min(bal, Math.floor(sub / POINT_VALUE));
+  usePts = Math.max(0, Math.min(usePts, maxUse));
+  const disc = usePts * POINT_VALUE, total = sub - disc;
+  return {sub, mid, bal, maxUse, disc, total, earn: mid ? Math.floor(total / POINT_EVERY) : 0};
+}
+function usePt(d){ usePts += d; renderTotals(); }
+function renderTotals(){
+  const c = calc();
+  if (!c.mid){
+    $('pts-box').innerHTML = `<p class="ptsmuted">${I('star')} Isi No. WA atau email di atas supaya dapat & bisa pakai poin. Belanja ${rp(POINT_EVERY)} = 1 poin.</p>`;
+  } else {
+    $('pts-box').innerHTML = `
+      <div class="ptsrow">
+        <div><b>${I('star')} Saldo poin: ${c.bal}</b><small>= potongan ${rp(c.bal * POINT_VALUE)}</small></div>
+        ${c.maxUse > 0 ? `<div class="ptsuse"><small>Pakai</small><div class="stepper">
+          <button type="button" onclick="usePt(-1)" aria-label="Kurangi poin">−</button><span>${usePts}</span>
+          <button type="button" onclick="usePt(1)" aria-label="Tambah poin">+</button></div></div>` : ''}
+      </div>
+      <p class="ptsearn">+${c.earn} poin dari pesanan ini (masuk setelah dikonfirmasi Manager)</p>`;
+  }
+  $('o-disc').textContent = c.disc ? `Subtotal ${rp(c.sub)} · Poin −${rp(c.disc)}` : '';
+  $('o-total').textContent = rp(c.total);
+  if (payMethod === 'QRIS') renderPay();
+}
+function qrBlock(total){
+  const st = S.settings;
+  return `<div class="qrbox"><img src="${esc(st.qris)}" alt="QRIS Ulumunch">
+    <b>${esc(st.qrisName || 'QRIS Ulumunch')}</b>
+    <small>Scan & bayar ${total != null ? '<b>' + rp(total) + '</b>' : 'sesuai total'}. Tunjukkan bukti bayar saat ambil pesanan.</small></div>`;
+}
+function renderPay(){
+  const has = !!S.settings.qris;
+  if (!has && payMethod === 'QRIS') payMethod = 'Cash';
+  $('pay').innerHTML = [['Cash','cash','Bayar tunai saat ambil'],['QRIS','qr','Scan QR dari HP']].map(([v,ic,d]) => {
+    const dis = v === 'QRIS' && !has;
+    return `<label class="payopt ${payMethod===v?'on':''} ${dis?'dis':''}">
+      <input type="radio" name="pay" value="${v}" ${payMethod===v?'checked':''} ${dis?'disabled':''} onchange="setPay('${v}')">
+      ${I(ic)}<span><b>${v}</b><small>${dis ? 'Belum tersedia' : d}</small></span></label>`;
+  }).join('');
+  $('pay-info').innerHTML = payMethod === 'QRIS'
+    ? qrBlock(calc().total)
+    : `<div class="cash">${I('cash')}<div><b>Pembayaran: CASH / Tunai</b><small>Bayar saat ambil di dekat Lapangan Alfarabi (snack time). Siapkan uang pas ya!</small></div></div>`;
+}
+function setPay(v){ payMethod = v; renderPay(); }
+async function submitOrder(e){
+  e.preventDefault(); if (busy) return;
+  const name = $('o-name').value.trim(), phone = $('o-phone').value.trim(),
+        email = $('o-email').value.trim(), note = $('o-note').value.trim();
+  let ok = true;
+  const flag = (id, bad) => { $(id).classList.toggle('show', bad); if (bad) ok = false; };
+  flag('e-cart', !cartItems().length); flag('e-name', !name);
+  flag('e-phone', !!phone && !validPhone(phone)); flag('e-email', !!email && !validEmail(email));
+  if (!ok){ toast('Cek lagi isian yang merah ya!'); return; }
+  busy = true; $('o-submit').disabled = true;
+  try {
+    await fresh('menu','orders','points','settings');
+    const items = cartItems();
+    for (const it of items){
+      const m = byId(it.id);
+      if (!m || stockOf(m) < it.qty){
+        if (m) cart[m.id] = stockOf(m); else delete cart[it.id];
+        toast(m ? `Stok ${m.title} tinggal ${stockOf(m)}, ubah jumlahnya ya` : `${it.title} sudah tidak tersedia`);
+        renderAll(); renderCart(); return;
+      }
+    }
+    if (payMethod === 'QRIS' && !S.settings.qris) payMethod = 'Cash';
+    const c = calc();
+    items.forEach(it => { const m = byId(it.id); m.stock = stockOf(m) - it.qty; });
+    if (c.mid){
+      const p = S.points[c.mid] || (S.points[c.mid] = {name, pts:0});
+      p.name = name; p.pts = Math.max(0, p.pts - usePts);
+    }
+    const o = { id:'ULU-' + Date.now().toString(36).toUpperCase().slice(-5), name, phone, email, note, items,
+                subtotal:c.sub, usedPts:usePts, discount:c.disc, total:c.total, earnedPts:c.earn, member:c.mid, credited:false,
+                payment:payMethod, emailSent:false, status:'Menunggu', date:today() };
+    S.orders.unshift(o);
+    await Promise.all([save('menu'), save('orders'), save('points')]);
+    renderAll(); closeM('m-order'); showReceipt(o);
+  } finally { busy = false; $('o-submit').disabled = false; }
+}
+function orderText(o){
+  const L = ['Halo Ulumunch! Saya mau Pre-Order 🙌','',`Kode: ${o.id}`,`Nama: ${o.name}`];
+  if (o.phone) L.push(`No. WA: ${o.phone}`);
+  if (o.email) L.push(`Email: ${o.email}`);
+  L.push('', ...o.items.map(i => `• ${i.title} x${i.qty} = ${rp(i.price*i.qty)}`), '');
+  if (o.usedPts) L.push(`Subtotal: ${rp(o.subtotal)}`, `Pakai poin: ${o.usedPts} (-${rp(o.discount)})`);
+  L.push(`TOTAL: ${rp(o.total)}`, `Pembayaran: ${o.payment === 'QRIS' ? 'QRIS' : 'CASH saat ambil'}`, `Ambil: ${LOKASI}`);
+  if (o.earnedPts) L.push(`Poin didapat: +${o.earnedPts} (masuk setelah dikonfirmasi Manager)`);
+  if (o.note) L.push(`Catatan: ${o.note}`);
+  return L.join('\n');
+}
+function showReceipt(o){
+  lastOrder = o; receiptUnlocked = false;
+  $('r-close').textContent = 'Tutup';
+  $('receipt').innerHTML = `
+    <div class="row"><span>Kode</span><span>${esc(o.id)}</span></div>
+    <div class="row"><span>Nama</span><span>${esc(o.name)}</span></div>
+    ${o.phone ? `<div class="row"><span>WhatsApp</span><span>${esc(o.phone)}</span></div>` : ''}
+    ${o.email ? `<div class="row"><span>Email</span><span>${esc(o.email)}</span></div>` : ''}<hr>
+    ${o.items.map(i => `<div class="row"><span>${esc(i.title)} ×${i.qty}</span><span>${rp(i.price*i.qty)}</span></div>`).join('')}<hr>
+    ${o.usedPts ? `<div class="row"><span>Pakai ${o.usedPts} poin</span><span>−${rp(o.discount)}</span></div>` : ''}
+    <div class="row"><span>Pembayaran</span><span>${o.payment === 'QRIS' ? '📱 QRIS' : '💵 CASH'}</span></div>
+    ${o.earnedPts ? `<div class="row"><span>Poin didapat</span><span>⭐ +${o.earnedPts}</span></div>` : ''}
+    <div class="row" style="font-size:18px"><span>Total</span><span>${rp(o.total)}</span></div>`;
+  $('r-qris').innerHTML = (o.payment === 'QRIS' && S.settings.qris) ? qrBlock(o.total) : '';
+  $('r-mail').href = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent('Pre-Order Ulumunch ' + o.id + ' – ' + o.name)}&body=${encodeURIComponent(orderText(o))}`;
+  $('r-wa').href = `https://wa.me/${ORDER_WA}?text=${encodeURIComponent(orderText(o))}`;
+  openM('m-receipt');
+}
+async function markEmail(){
+  if (!lastOrder) return;
+  receiptUnlocked = true; $('r-close').textContent = 'Sudah Kirim Email, Tutup';
+  await fresh('orders');
+  const o = S.orders.find(x => x.id === lastOrder.id);
+  if (o && !o.emailSent){ o.emailSent = true; await save('orders'); renderOrders(); }
+}
+function copyReceipt(){
+  if (!lastOrder) return;
+  const text = orderText(lastOrder);
+  const done = () => { receiptUnlocked = true; toast(`Tersalin! Tempel & kirim ke ${ORDER_EMAIL} 📋`); };
+  const fallback = () => { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); done(); } catch(e){ toast('Gagal menyalin'); } t.remove(); };
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done).catch(fallback); else fallback();
+}
+function login(){
+  if ($('pin').value === MANAGER_PIN){ mgr = true; $('pin').value = ''; $('e-pin').classList.remove('show'); applyMgr(); toast('Mode Manager aktif ✅'); }
+  else { $('e-pin').classList.add('show'); $('pin').value = ''; }
+}
+function logout(){ mgr = false; applyMgr(); toast('Keluar dari Area Manager'); }
+function applyMgr(){
+  $('login-box').classList.toggle('hide', mgr);
+  $('dash').classList.toggle('hide', !mgr);
+  document.querySelectorAll('.mgr-only').forEach(el => el.classList.toggle('hide', !mgr));
+  document.querySelectorAll('.mgr-hide').forEach(el => el.classList.toggle('hide', mgr));
+  $('lock').innerHTML = I(mgr ? 'unlock' : 'lock');
+  renderAll();
+}
+function addPts(mid, name, d){
+  if (!mid) return;
+  const p = S.points[mid] || (S.points[mid] = {name, pts:0});
+  p.pts = Math.max(0, p.pts + d); if (name) p.name = name;
+}
+async function setStatus(id, s){
+  if (!mgr) return;
+  await fresh('orders','points');
+  const o = S.orders.find(x => x.id === id); if (!o) return;
+  o.status = s;
+  await save('orders');
+  renderOrders(); renderMgr();
+  toast(`${id} → ${s}${o.member && o.earnedPts && !o.credited ? ' · poin menunggu konfirmasi' : ''}`);
+}
+function confirmPts(id){
+  if (!mgr) return;
+  const o = S.orders.find(x => x.id === id);
+  if (!o || !o.member || !o.earnedPts || o.credited) return;
+  ask(`Konfirmasi +${o.earnedPts} poin untuk ${o.name} (${id})? Pastikan pembayaran sudah diterima.`, async () => {
+    await fresh('orders','points');
+    const x = S.orders.find(q => q.id === id);
+    if (!x || x.credited) return;
+    addPts(x.member, x.name, x.earnedPts); x.credited = true; x.creditedAt = today();
+    await Promise.all([save('orders'), save('points')]);
+    renderOrders(); renderMgr(); toast(`+${x.earnedPts} poin masuk ke ${x.name} ✅`);
+  });
+}
+function revokePts(id){
+  if (!mgr) return;
+  const o = S.orders.find(x => x.id === id);
+  if (!o || !o.credited) return;
+  ask(`Batalkan ${o.earnedPts} poin yang sudah diberikan ke ${o.name} (${id})?`, async () => {
+    await fresh('orders','points');
+    const x = S.orders.find(q => q.id === id);
+    if (!x || !x.credited) return;
+    addPts(x.member, x.name, -x.earnedPts); x.credited = false; delete x.creditedAt;
+    await Promise.all([save('orders'), save('points')]);
+    renderOrders(); renderMgr(); toast('Poin dibatalkan');
+  });
+}
+function delOrder(id){
+  if (!mgr) return;
+  const o = S.orders.find(x => x.id === id);
+  const back = o && o.status !== 'Selesai';
+  ask(`Hapus pesanan ${id}?${back ? ' Stok & poin yang dipakai akan dikembalikan.' : ''}`, async () => {
+    await fresh('orders','menu','points');
+    const x = S.orders.find(q => q.id === id); if (!x) return;
+    if (x.status !== 'Selesai'){
+      x.items.forEach(it => { const m = it.id != null ? byId(it.id) : S.menu.find(mm => mm.title === it.title); if (m) m.stock = stockOf(m) + it.qty; });
+      if (x.member && x.usedPts) addPts(x.member, x.name, x.usedPts);
+      if (x.credited) addPts(x.member, x.name, -x.earnedPts);
+    }
+    S.orders = S.orders.filter(q => q.id !== id);
+    await Promise.all([save('orders'), save('menu'), save('points')]);
+    renderAll(); toast('Pesanan dihapus');
+  });
+}
+function bumpStock(id, d){ const el = $('stk-' + id); el.value = Math.max(0, (parseInt(el.value) || 0) + d); }
+async function setStock(id){
+  if (!mgr) return;
+  const v = Math.max(0, parseInt($('stk-' + id).value) || 0);
+  await fresh('menu');
+  const m = byId(id); if (!m) return;
+  m.stock = v; await save('menu'); renderAll(); toast(`Stok ${m.title} = ${v} ✅`);
+}
+async function setPts(idx){
+  if (!mgr) return;
+  const k = memberKeys[idx]; if (!k) return;
+  const v = Math.max(0, parseInt($('pt-' + idx).value) || 0);
+  await fresh('points');
+  if (!S.points[k]) return;
+  S.points[k].pts = v; await save('points'); renderMgr(); toast(`Poin ${S.points[k].name} = ${v} ✅`);
+}
+function uploadQris(inp){
+  const f = inp.files[0]; if (!f) return;
+  if (!f.type.startsWith('image/')){ toast('File harus berupa gambar'); return; }
+  const r = new FileReader();
+  r.onload = () => {
+    const img = new Image();
+    img.onload = () => {
+      const max = 800, sc = Math.min(1, max / Math.max(img.width, img.height));
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc);
+      const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height);
+      x.drawImage(img, 0, 0, c.width, c.height);
+      setQris(c.toDataURL('image/jpeg', 0.92)); inp.value = '';
+    };
+    img.onerror = () => toast('Gambar tidak bisa dibaca');
+    img.src = r.result;
+  };
+  r.readAsDataURL(f);
+}
+async function setQris(src){
+  if (!mgr) return;
+  await fresh('settings');
+  S.settings.qris = src;
+  S.settings.qrisName = $('qr-name').value.trim();
+  const ok = await save('settings');
+  $('qr-url').value = '';
+  renderMgr(); toast(ok ? 'QRIS tersimpan ✅' : 'Gagal menyimpan QRIS (gambar terlalu besar?)');
+}
+function saveQris(){
+  const u = $('qr-url').value.trim();
+  if (u) setQris(u);
+  else if (S.settings.qris) setQris(S.settings.qris);
+  else toast('Upload gambar atau isi URL QRIS dulu');
+}
+function removeQris(){
+  if (!mgr) return;
+  ask('Hapus QRIS? Pembeli hanya bisa bayar Cash.', async () => {
+    await fresh('settings'); S.settings.qris = ''; await save('settings'); renderMgr(); toast('QRIS dihapus');
+  });
+}
+function openMenuEditor(id){
+  if (!mgr) return;
+  const m = id != null ? byId(id) : null;
+  $('mn-head').textContent = m ? 'Edit Menu' : 'Tambah Menu';
+  $('mn-id').value = m ? m.id : '';
+  $('mn-title').value = m ? m.title : '';
+  $('mn-price').value = m ? m.price : '';
+  $('mn-unit').value = m ? (m.unit || '') : '';
+  $('mn-desc').value = m ? m.desc : '';
+  $('mn-stock').value = m ? stockOf(m) : 10;
+  $('mn-emoji').value = m ? (m.emoji || '🍽️') : '🍢';
+  $('mn-color').value = m && [...$('mn-color').options].some(o => o.value === m.color) ? m.color : '#d9c8e8';
+  $('mn-ex').checked = !!(m && m.exclusive);
+  $('mn-img').value = m ? (m.image || '') : '';
+  openM('m-menu');
+}
+async function saveMenu(e){
+  e.preventDefault(); if (!mgr) return;
+  if (!$('mn-title').value.trim() || $('mn-price').value === '' || !$('mn-desc').value.trim() || $('mn-stock').value === ''){ toast('Nama, harga, deskripsi, dan stok wajib diisi'); return; }
+  await fresh('menu');
+  const id = Number($('mn-id').value);
+  const data = { title:$('mn-title').value.trim(), price:parseInt($('mn-price').value) || 0, unit:$('mn-unit').value.trim(),
+    desc:$('mn-desc').value.trim(), stock:Math.max(0, parseInt($('mn-stock').value) || 0), emoji:$('mn-emoji').value.trim() || '🍽️',
+    color:$('mn-color').value, exclusive:$('mn-ex').checked, image:$('mn-img').value.trim() };
+  const m = id ? byId(id) : null;
+  if (m) Object.assign(m, data); else S.menu.push({ id:Date.now(), ...data });
+  await save('menu'); renderAll(); closeM('m-menu'); toast(m ? 'Menu diperbarui ✅' : 'Menu ditambahkan ✅');
+}
+function delMenu(id){
+  if (!mgr) return;
+  ask('Hapus menu ini dari daftar?', async () => { await fresh('menu'); S.menu = S.menu.filter(m => m.id !== id); await save('menu'); renderAll(); });
+}
+async function saveGallery(e){
+  e.preventDefault(); if (!mgr) return;
+  if (!$('g-title').value.trim() || !$('g-img').value.trim()){ toast('Judul dan URL gambar wajib diisi'); return; }
+  await fresh('gallery');
+  S.gallery.push({ id:Date.now(), title:$('g-title').value.trim(), tag:$('g-tag').value.trim() || 'Galeri', image:$('g-img').value.trim(), ico:'📷', color:'#fbe3c2' });
+  await save('gallery'); renderGallery(); closeM('m-gallery'); $('g-title').value = ''; $('g-img').value = ''; $('g-tag').value = 'Dokumentasi'; toast('Foto ditambahkan ✅');
+}
+function delGallery(id){
+  if (!mgr) return;
+  ask('Hapus foto ini?', async () => { await fresh('gallery'); S.gallery = S.gallery.filter(g => g.id !== id); await save('gallery'); renderGallery(); });
+}
+function openAnnEditor(id){
+  if (!mgr){ toast('Hanya Manager yang bisa mengubah pengumuman'); return; }
+  const a = S.ann.find(x => x.id === id);
+  $('a-id').value = a ? a.id : '';
+  $('a-title').value = a ? a.title : '';
+  $('a-desc').value = a ? a.content : '';
+  $('ann-ed-title').textContent = a ? 'Ganti Pengumuman' : 'Buat Pengumuman';
+  $('ann-ed-btn').textContent = a ? 'Simpan Perubahan' : 'Terbitkan';
+  openM('m-ann');
+}
+async function saveAnn(e){
+  e.preventDefault(); if (!mgr) return;
+  if (!$('a-title').value.trim() || !$('a-desc').value.trim()){ toast('Judul dan isi pengumuman wajib diisi'); return; }
+  await fresh('ann');
+  const id = Number($('a-id').value), title = $('a-title').value.trim(), content = $('a-desc').value.trim();
+  const a = S.ann.find(x => x.id === id);
+  if (a){ a.title = title; a.content = content; a.date = today(); toast('Pengumuman diperbarui ✅'); }
+  else { S.ann.unshift({ id:Date.now(), date:today(), title, content }); toast('Pengumuman terbit ✅'); }
+  await save('ann'); renderAnn(); closeM('m-ann');
+}
+function delAnn(id){
+  if (!mgr) return;
+  ask('Hapus pengumuman ini?', async () => { await fresh('ann'); S.ann = S.ann.filter(a => a.id !== id); await save('ann'); renderAnn(); });
+}
+hydrateIcons();
+$('lock').innerHTML = I('lock');
+renderTeam(); renderAll();
+loadAll().then(renderAll);
+setInterval(async () => {
+  if (busy || document.querySelector('.modal.open')) return;
+  const a = document.activeElement;
+  if (a && /INPUT|TEXTAREA|SELECT/.test(a.tagName)) return;
+  await loadAll(); renderAll();
+}, 20000);
+(() => {
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+  setTimeout(() => root.classList.add('intro-done'), 2800);
+  const bar = document.createElement('div'); bar.id = 'sprog'; document.body.appendChild(bar);
+  const fabs = document.createElement('div'); fabs.className = 'fabs';
+  fabs.innerHTML = `<button class="fab-top" aria-label="Kembali ke atas">${I('arrow')}</button><button class="btn btn-purple fab-order">${I('plus')}<span>Pre-Order</span></button>`;
+  document.body.appendChild(fabs);
+  fabs.querySelector('.fab-top').onclick = () => scrollTo({top:0, behavior:'smooth'});
+  fabs.querySelector('.fab-order').onclick = () => openOrder();
+  const hdr = document.querySelector('.hdr'); let tk = false;
+  function onScroll(){
+    tk = false;
+    const y = root.scrollTop || document.body.scrollTop, max = root.scrollHeight - root.clientHeight;
+    bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    if (y > 60) hdr.classList.add('scrolled'); else if (y < 10) hdr.classList.remove('scrolled');
+    fabs.classList.toggle('show', y > 420);
+  }
+  addEventListener('scroll', () => { if (!tk){ tk = true; requestAnimationFrame(onScroll); } }, {passive:true});
+  onScroll();
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target; io.unobserve(el);
+    if (el.classList.contains('rv-group')){
+      [...el.children].forEach((c,i) => c.style.setProperty('--d', i));
+      el.classList.add('in');
+      setTimeout(() => el.classList.add('done'), el.children.length * 90 + 900);
+    } else el.classList.add('in');
+  }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  ['.steps','#team-grid','#menu-grid','#gallery-grid','#ann-list','#stats'].forEach(s => {
+    const el = document.querySelector(s); if (el){ el.classList.add('rv-group'); io.observe(el); }
+  });
+  document.querySelectorAll('.sec-head,.ptscard,.annbar').forEach(el => { el.classList.add('rv'); io.observe(el); });
+  const title = document.querySelector('.p-title'); let li = 0;
+  title.setAttribute('aria-label', 'Ulumunch Menu');
+  (function split(el){
+    [...el.childNodes].forEach(n => {
+      if (n.nodeType === 3 && n.textContent.trim()){
+        const f = document.createDocumentFragment();
+        [...n.textContent].forEach(ch => {
+          const s = document.createElement('span'); s.className = 'ltr'; s.textContent = ch;
+          s.style.setProperty('--i', li++); f.appendChild(s);
+        });
+        n.replaceWith(f);
+      } else if (n.nodeType === 1 && !n.classList.contains('i')) split(n);
+    });
+  })(title);
+  title.addEventListener('animationend', e => {
+    const t = e.target; if (!t.classList.contains('ltr')) return;
+    if (e.animationName === 'uDrop') t.classList.add('ok');
+    if (e.animationName === 'uJump') t.classList.remove('jump');
+  });
+  title.addEventListener('pointerover', e => {
+    const t = e.target;
+    if (t.classList && t.classList.contains('ltr') && t.classList.contains('ok')) t.classList.add('jump');
+  });
+  const poster = document.querySelector('.poster'); let lastT = 0;
+  const TRAIL = ['✦','✧','★','✦'], TC = ['#f6c945','#6e3f8f','#e07a3a','#25a35a','#d6332a'];
+  poster.addEventListener('pointermove', e => {
+    const r = poster.getBoundingClientRect();
+    poster.style.setProperty('--px', ((e.clientX - r.left) / r.width - .5).toFixed(3));
+    poster.style.setProperty('--py', ((e.clientY - r.top) / r.height - .5).toFixed(3));
+    if (RM || e.pointerType !== 'mouse') return;
+    const now = performance.now(); if (now - lastT < 55) return; lastT = now;
+    const s = document.createElement('span'); s.className = 'trail';
+    s.textContent = TRAIL[Math.random() * TRAIL.length | 0];
+    s.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;color:${TC[Math.random() * TC.length | 0]}`;
+    document.body.appendChild(s);
+    s.animate([
+      {transform:'translate(-50%,-50%) scale(1) rotate(0)', opacity:1},
+      {transform:`translate(-50%,${20 + Math.random() * 30}px) scale(.2) rotate(${Math.random() * 180 | 0}deg)`, opacity:0}
+    ], {duration:800, easing:'ease-out'}).onfinish = () => s.remove();
+  });
+  poster.addEventListener('pointerleave', () => { poster.style.setProperty('--px', 0); poster.style.setProperty('--py', 0); });
+  let tiltEl = null;
+  const resetTilt = c => { c.style.setProperty('--rx','0deg'); c.style.setProperty('--ry','0deg'); };
+  document.addEventListener('pointermove', e => {
+    if (RM || e.pointerType !== 'mouse') return;
+    const c = e.target.closest('.mcard,.gcard');
+    if (tiltEl && tiltEl !== c) resetTilt(tiltEl);
+    tiltEl = c; if (!c) return;
+    const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    c.style.setProperty('--ry', ((x - .5) * 10).toFixed(2) + 'deg');
+    c.style.setProperty('--rx', ((.5 - y) * 10).toFixed(2) + 'deg');
+    c.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+    c.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+  }, {passive:true});
+  root.addEventListener('mouseleave', () => tiltEl && resetTilt(tiltEl));
+  document.addEventListener('pointerdown', e => {
+    const b = e.target.closest('.btn'); if (!b || b.disabled || RM) return;
+    const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2;
+    const s = document.createElement('span'); s.className = 'ripple';
+    s.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d/2}px;top:${e.clientY - r.top - d/2}px`;
+    b.prepend(s); setTimeout(() => s.remove(), 650);
+  });
+  function burst(x, y, items, n = 14){
+    if (RM) return;
+    for (let i = 0; i < n; i++){
+      const s = document.createElement('span'); s.className = 'fx'; s.textContent = items[i % items.length];
+      s.style.left = x + 'px'; s.style.top = y + 'px'; document.body.appendChild(s);
+      const a = Math.random() * Math.PI * 2, d = 60 + Math.random() * 100;
+      s.animate([
+        {transform:'translate(-50%,-50%) scale(.3)', opacity:1},
+        {transform:`translate(calc(-50% + ${(Math.cos(a) * d) | 0}px), calc(-50% + ${(Math.sin(a) * d - 40) | 0}px)) scale(1.1) rotate(${Math.random() * 360 | 0}deg)`, opacity:0}
+      ], {duration:750 + Math.random() * 450, easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish = () => s.remove();
+    }
+  }
+  document.addEventListener('click', e => {
+    const t = e.target.closest('.pitem,[onclick*="openOrder("],.fab-order'); if (!t || t.disabled) return;
+    const m = (t.getAttribute('onclick') || '').match(/openOrder\((\d+)\)/);
+    const it = m ? byId(+m[1]) : null;
+    let x = e.clientX, y = e.clientY;
+    if (!e.detail){ const r = t.getBoundingClientRect(); x = r.left + r.width / 2; y = r.top + r.height / 2; }
+    burst(x, y, [(it && it.emoji) || '🍽️', '✨', '⭐', '💫']);
+  }, true);
+  function confetti(){
+    if (RM) return;
+    const cols = ['#f6c945','#6e3f8f','#e07a3a','#25a35a','#d6332a','#1e8fff','#d96aa7'];
+    for (let i = 0; i < 90; i++){
+      const p = document.createElement('i'); p.className = 'cf';
+      p.style.cssText = `background:${cols[i % cols.length]};left:${Math.random() * 100}vw;width:${6 + Math.random() * 6}px;height:${10 + Math.random() * 8}px`;
+      document.body.appendChild(p);
+      const dx = (Math.random() - .5) * 220;
+      p.animate([
+        {transform:'translate(0,0) rotate(0)'},
+        {transform:`translate(${dx}px,110vh) rotate(${360 + Math.random() * 720 | 0}deg)`}
+      ], {duration:1800 + Math.random() * 1500, delay:Math.random() * 300, easing:'cubic-bezier(.3,.6,.5,1)', fill:'backwards'}).onfinish = () => p.remove();
+    }
+  }
+  function countUp(){
+    if (RM) return;
+    document.querySelectorAll('#stats b').forEach(b => {
+      const txt = b.textContent, n = parseInt(txt.replace(/\D/g, '')) || 0, isRp = txt.startsWith('Rp'), t0 = performance.now();
+      const tick = now => {
+        const k = Math.min(1, (now - t0) / 900), v = Math.round(n * (1 - Math.pow(1 - k, 3)));
+        b.textContent = isRp ? rp(v) : v; if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+  const _showReceipt = showReceipt;
+  showReceipt = function(o){ _showReceipt(o); setTimeout(confetti, 150); };
+  const _step = step;
+  step = function(id, d){
+    const before = cart[id] || 0; _step(id, d);
+    if ((cart[id] || 0) === before || RM) return;
+    const line = $('cart').children[sortedMenu().findIndex(m => m.id === id)]; if (!line) return;
+    const sp = line.querySelector('.stepper span');
+    sp && sp.animate([{transform:'scale(1.8)', color:'#6e3f8f'}, {transform:'scale(1)'}], {duration:350, easing:'cubic-bezier(.3,1.6,.5,1)'});
+    const th = line.querySelector('.thumb');
+    if (th && d > 0) th.animate([{transform:'none'}, {transform:'rotate(-10deg) scale(1.15)'}, {transform:'rotate(6deg)'}, {transform:'none'}], {duration:450});
+  };
+  const _renderTotals = renderTotals;
+  renderTotals = function(){
+    const el = $('o-total'), before = el.textContent; _renderTotals();
+    if (el.textContent !== before && !RM) el.animate([{transform:'scale(1.3) rotate(-4deg)'}, {transform:'none'}], {duration:400, easing:'cubic-bezier(.3,1.6,.5,1)'});
+  };
+  const _login = login;
+  login = function(){
+    _login();
+    if (mgr) setTimeout(countUp, 60);
+    else if (!RM) $('login-box').animate([{transform:'translateX(0)'}, {transform:'translateX(-12px)'}, {transform:'translateX(10px)'}, {transform:'translateX(-6px)'}, {transform:'translateX(0)'}], {duration:420});
+  };
+  const _go = go;
+  go = function(t){
+    _go(t);
+    const b = document.querySelector('.tab.on'); if (!b) return;
+    if (!RM) b.animate([{transform:'scale(.9)'}, {transform:'scale(1.08)'}, {transform:'scale(1)'}], {duration:380, easing:'ease-out'});
+    const nav = b.parentElement, br = b.getBoundingClientRect(), nr = nav.getBoundingClientRect();
+    nav.scrollBy({left: br.left - nr.left - nr.width / 2 + br.width / 2, behavior:'smooth'});
+  };
+})();
+</script>
+</body>
+</html>
